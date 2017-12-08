@@ -11,16 +11,16 @@ var app = function(){
   // makeRequest(topArtistsUrl, artistRequestComplete);
   // makeRequest(topTracksUrl, trackRequestComplete);
   // makeRequest(weeklyTracksUrl, weeklyTracksComplete);
-  makeRequest(userInfo, userInformationComplete)
+  makeRequest(userInfo, userRequestComplete)
 
 }
 
-// var makeRequest = function(url, callback){
-//   var request = new XMLHttpRequest();
-//   request.open("GET", url);
-//   request.addEventListener("load", callback);
-//   request.send();
-// }
+var makeRequest = function(url, callback){
+  var request = new XMLHttpRequest();
+  request.open("GET", url);
+  request.addEventListener("load", callback);
+  request.send();
+}
 
 var trackRequestComplete = function(){
   if (this.status !== 200) return;
@@ -34,6 +34,13 @@ var artistRequestComplete = function(){
   var jsonString = this.responseText;
   var myData = JSON.parse(jsonString);
   populateArtistList(myData.topartists.artist);
+}
+
+var userRequestComplete = function(){
+  if (this.status !== 200) return;
+  var jsonString = this.responseText;
+  var myData = JSON.parse(jsonString);
+  populateUserInformation(myData.user);
 }
 
 var populateArtistList = function(myLastFmData){
@@ -58,15 +65,12 @@ var populateTrackList = function(myLastFmData){
   })
 }
 
-var userInformationComplete = function(myLastFmData){
+var populateUserInformation = function(user){
+  // console.log(user);
   var tracks = document.getElementById('total-tracks-played');
-  var ul = document.getElementById('track-list');
 
-  myLastFmData.forEach(function(track){
-    var li = document.createElement('li');
-    li.innerText = track.name + " (" + track.playcount + ")";
-    ul.appendChild(li);
-  })
+  tracks.innerText = user.playcount;
+
 }
 
 window.addEventListener('load', app)
