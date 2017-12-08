@@ -1,0 +1,42 @@
+body {
+  margin: 0 auto;
+}
+
+/*HEADER STYLING*/
+
+header {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#header-logo {
+  background-color: black;
+}
+
+#header-text {
+  /*color: #666666;*/
+  color: #B80711;
+  text-align: center;
+}
+
+#header-details {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-text-details {
+  color: #666666;
+  text-align: center;
+}
+
+
+img#profile-picture {
+  width: auto;
+  max-height: 250px;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    border-radius: 25%/50%;
+    /*width: 100px;*/
+    /*height: 100px;*/
+}

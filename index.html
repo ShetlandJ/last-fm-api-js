@@ -4,12 +4,32 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>James.FM</title>
   <script src="index.js"></script>
+  <script src="lastFm.js"></script>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 </head>
+
 <body>
-  <main id="main-content">
+  <header>
+    <div id="header-logo">
+      <h1 id="header-text">James.FM</h1>
+    </div>
+
+    <div id="header-details">
+      <img src="/images/me.jpg" id="profile-picture" alt="a picture of James">
+      <p class="header-text-details" id="username">ShetlandJames</p>
+      <p class="header-text-details" id="total-tracks-played">120,000</p>
+      <p class="header-text-details" id="total-artists-played">2,000</p>
+    </div>
+  </header>
+  <main id="artist-content">
     <ul id="artist-list"></ul>
+
+    <div id="track-content">
+      <ul id="track-list"></ul>
+    </div>
   </main>
 </body>
 </html>
