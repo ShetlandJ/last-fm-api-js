@@ -43,16 +43,20 @@ var userRequestComplete = function(){
   populateUserInformation(myData.user);
 }
 
-var populateArtistList = function(myLastFmData){
+var populateArtistList = function(artistList){
   var main = document.getElementById('main-content');
   var ul = document.getElementById('artist-list');
   var headerDetails = document.getElementById('header-details');
-  headerDetails.style.background =
 
-  myLastFmData.forEach(function(artist){
-    var li = document.createElement('li');
-    li.innerText = artist.name + " (" + artist.playcount + ")";
-    ul.appendChild(li);
+  var topFive = artistList.splice(0, 5);
+  console.log(topFive)
+
+  topFive.forEach(function(artist, index){
+
+      var li = document.createElement('li');
+      li.innerText = artist.name + " (" + artist.playcount + ")";
+      ul.appendChild(li);
+
   })
 }
 
@@ -64,6 +68,7 @@ var populateTrackList = function(myLastFmData){
     var li = document.createElement('li');
     li.innerText = track.name + " (" + track.playcount + ")";
     ul.appendChild(li);
+    counter++;
   })
 }
 
