@@ -1,10 +1,12 @@
 var app = function(){
 
-  var url = "http://ws.audioscrobbler.com/2.0/?method=user.gettopartists&user=jastewart&api_key=fe2d0262edc8b4506e805c71e47d35b6&format=json"
-  makeRequest(url, requestComplete);
+  var lastFM = new LastFm();
+  var topArtistsUrl = lastFM.setCategoryType('gettopartists');
+
+  makeTopArtistRequest(topArtistsUrl, requestComplete);
 }
 
-var makeRequest = function(url, callback){
+var makeTopArtistRequest = function(url, callback){
   var request = new XMLHttpRequest();
   request.open("GET", url);
   request.addEventListener("load", callback);
@@ -15,7 +17,6 @@ var requestComplete = function(){
   if (this.status !== 200) return;
   var jsonString = this.responseText;
   var myTopArtists = JSON.parse(jsonString);
-  // console.log(myTopArtists.topartists)
   populateArtistList(myTopArtists.topartists.artist);
 }
 
