@@ -8,7 +8,7 @@ var app = function(){
   var userInfo = lastFM.setCategoryType('getinfo');
 
 
-  // makeRequest(topArtistsUrl, artistRequestComplete);
+  makeRequest(topArtistsUrl, artistRequestComplete);
   // makeRequest(topTracksUrl, trackRequestComplete);
   // makeRequest(weeklyTracksUrl, weeklyTracksComplete);
   makeRequest(userInfo, userRequestComplete)
@@ -46,6 +46,8 @@ var userRequestComplete = function(){
 var populateArtistList = function(myLastFmData){
   var main = document.getElementById('main-content');
   var ul = document.getElementById('artist-list');
+  var headerDetails = document.getElementById('header-details');
+  headerDetails.style.background =
 
   myLastFmData.forEach(function(artist){
     var li = document.createElement('li');
@@ -66,11 +68,14 @@ var populateTrackList = function(myLastFmData){
 }
 
 var populateUserInformation = function(user){
-  // console.log(user);
-  var tracks = document.getElementById('total-tracks-played');
 
-  tracks.innerText = user.playcount;
+  var username = document.getElementById('username');
+  var realName = document.getElementById('real-name');
+  var userTracks = document.getElementById('total-tracks-played');
 
+  username.innerText = user.name;
+  realName.innerText = user.realname;
+  userTracks.innerText = user.playcount;
 }
 
 window.addEventListener('load', app)
