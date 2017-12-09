@@ -45,17 +45,30 @@ var userRequestComplete = function(){
 
 var populateArtistList = function(artistList){
   var main = document.getElementById('main-content');
-  var ul = document.getElementById('artist-list');
+  // var ul = document.getElementById('artist-list');
+  var artistBlock = document.getElementById('artist-block');
   var headerDetails = document.getElementById('header-details');
 
   var topFive = artistList.splice(0, 5);
-  console.log(topFive)
 
   topFive.forEach(function(artist, index){
 
-      var li = document.createElement('li');
-      li.innerText = artist.name + " (" + artist.playcount + ")";
-      ul.appendChild(li);
+    var artistPhoto = document.createElement('img');
+    var artistName = document.createElement('p');
+    var artistPlays = document.createElement('p');
+
+    for (var picture of artist.image) {
+      artistPhoto.src = picture['#text'];
+    }
+    artistName.innerText = artist.name;
+    artistPlays.innerText = artist.playcount
+
+    artistBlock.appendChild(artistPhoto);
+    artistBlock.appendChild(artistName);
+    artistBlock.appendChild(artistPlays);
+    // var li = document.createElement('li');
+    // li.innerText = artist.name + " (" + artist.playcount + ")";
+    // ul.appendChild(li);
 
   })
 }
