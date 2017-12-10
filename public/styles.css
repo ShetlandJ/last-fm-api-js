@@ -11,6 +11,10 @@ li{
   list-style: none;
 }
 
+h2{
+  margin-left: 20px;
+}
+
 /*HEADER STYLING*/
 
 header {
@@ -65,10 +69,6 @@ h1#logo-text {
   flex-direction: column;
   padding-left: 20px;
   max-width: 660px;
-}
-
-h2{
-  margin-left: 20px;
 }
 
 .recent-track-item{
@@ -237,3 +237,25 @@ p#artist4playcount {
 p#artist5playcount {
   padding-bottom: 15px;
 }
+
+/*TOP TRACKS STYLING*/
+#top-tracks-list{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  max-width: 660px;
+}
+
+.top-track-item{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.top-track-item img{
+  padding-right: 8px;
+}
+
+.top-track-item:nth-child(even){
+    background-color: #F9F9F9;
+}​
