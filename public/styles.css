@@ -3,49 +3,62 @@ body {
   font-family: 'Open Sans',Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif
 }
 
-/*PROFILE PICTURE STYLING*/
-
-#profile-picture {
-  width: 185px;
-  height: 185px;
-  background-color: tomato;
-  border-radius: 50%
-}
-
-
 /*HEADER STYLING*/
 
 header {
   display: flex;
   flex-direction: column;
-  /*font-family: 'Open Sans', sans-serif;*/
 }
 
 #header-logo {
   background-color: black;
 }
 
-#header-text {
-  /*color: #666666;*/
-  color: #B80711;
+h1#logo-text {
   text-align: center;
+  color: #B80711;
+}
+
+#header-text {
+  padding-top: 15px;
 }
 
 #header-details {
   display: flex;
   flex-direction: row;
+  background-color: lightgrey;
 }
 
 .header-text-details {
   color: #666666;
-  text-align: center;
+  text-align: left;
+  margin: 0;
 }
 
 #profile-picture img {
-  max-width: 100%;
-  max-height: 100%;
   display: block;
   border-radius: 50%;
+  margin: 10px 25px 10px 25px;
+}
+
+#username {
+  font-size: 30px;
+  font-weight: 700;
+  color: white;
+}
+
+#real-name {
+  font-size: 12px;
+}
+
+/*ARTIST BLOCK HEADER*/
+
+#artist-block-header {
+  margin-left: 20px;
+}
+
+#artist-block-header h2{
+  margin-bottom: -15px;
 }
 
 /*ARTIST BLOCK STYLING*/
@@ -103,16 +116,17 @@ img.small-artist-image{
 
 #top-artist-square-name {
   font-size: 18px;
+  font-weight: 700;
+}
+
+#top-artist-square-playcount{
+  font-size: 12px;
 }
 
 #artist-squares {
   display: flex;
   flex-wrap: wrap;
   flex-basis: 310px
-}
-
-#top-artist-square-playcount{
-  font-size: 12px;
 }
 
 .small-artist-square {
@@ -131,9 +145,9 @@ img.small-artist-image{
 .small-artist-square-name {
   font-weight: 700;
   font-size: 14px;
-  text-decoration: underline;
   text-shadow: 0 0 10px rgba(0,0,0,.7);
 }
+
 .small-artist-square-playcount {
   font-size: 12px;
 }

@@ -45,13 +45,11 @@ var userRequestComplete = function(){
 
 var populateArtistList = function(artistList){
   var main = document.getElementById('main-content');
-  // var ul = document.getElementById('artist-list');
   var artistBlock = document.getElementById('artist-block');
   var headerDetails = document.getElementById('header-details');
 
   var topFive = artistList.splice(0, 5);
   var topFour = topFive.splice(1, 5);
-
 
   var artist1 = document.getElementById('artist1');
   var artist1name = document.getElementById('top-artist-square-name');
@@ -64,7 +62,6 @@ var populateArtistList = function(artistList){
 
   var smallArtistsBoxName = document.getElementsByClassName('small-artist-square-name');
   var smallArtistsBoxPlaycount = document.getElementsByClassName('small-artist-square-playcount');
-
 
   artist1name.innerText = topFive[0].name;
   artist1playcount.innerText = topFive[0].playcount + " plays";
@@ -108,10 +105,67 @@ var populateUserInformation = function(user){
   var username = document.getElementById('username');
   var realName = document.getElementById('real-name');
   var userTracks = document.getElementById('total-tracks-played');
+  var memberSince = document.getElementById('member-since');
 
   username.innerText = user.name;
-  realName.innerText = user.realname;
-  userTracks.innerText = user.playcount;
+  userTracks.innerText = "Scrobbles: " + this.formatNumber(user.playcount);
+
+  var date = new Date(user.registered['#text'] * 1000);
+
+  var month = this.getMonth(date.getMonth()+1)
+
+  realName.innerText = user.realname + " 🎶 scrobbling since: " + month + ", " + date.getFullYear();;
+}
+
+var formatNumber = function(num) {
+  var array = num.toString().split('');
+  var index = -3;
+  while (array.length + index > 0) {
+    array.splice(index, 0, ',');
+    index -= 4;
+  }
+  return array.join('');
+};
+
+var getMonth = function(monthNumber){
+  switch(monthNumber) {
+    case 1:
+    return "January";
+    break;
+    case 2:
+    return "February"
+    break;
+    case 3:
+    return "March";
+    break;
+    case 4:
+    return "April";
+    break;
+    case 5:
+    return "May";
+    break;
+    case 6:
+    return "June";
+    break;
+    case 7:
+    return "July";
+    break;
+    case 8:
+    return "August"
+    break;
+    case 9:
+    return "September";
+    break;
+    case 10:
+    return "October";
+    break;
+    case 11:
+    return "November";
+    break;
+    case 12:
+    return "December";
+    break;
+  }
 }
 
 window.addEventListener('load', app)
