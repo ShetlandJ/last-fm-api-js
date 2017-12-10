@@ -3,6 +3,10 @@ body {
   font-family: 'Open Sans',Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif
 }
 
+#main {
+  width: 660px;
+}
+
 /*HEADER STYLING*/
 
 header {
@@ -59,6 +63,10 @@ h1#logo-text {
 
 #artist-block-header h2{
   margin-bottom: -15px;
+}
+
+#duration-selector {
+  float: right;
 }
 
 /*ARTIST BLOCK STYLING*/
