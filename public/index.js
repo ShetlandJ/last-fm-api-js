@@ -4,7 +4,7 @@ var app = function(){
   var topArtistsUrl = lastFM.setCategoryType('gettopartists');
 
   var topTracksUrl = lastFM.setCategoryType('gettoptracks&limit=25');
-  var weeklyTracksUrl = lastFM.setCategoryType('getweeklytrackchart');
+  // var weeklyTracksUrl = lastFM.setCategoryType('getweeklytrackchart');
   var recentlyPlayedTracks = lastFM.setCategoryType('getRecentTracks&limit=10')
 
   var userInfo = lastFM.setCategoryType('getinfo');
@@ -28,6 +28,7 @@ var trackRequestComplete = function(){
   if (this.status !== 200) return;
   var jsonString = this.responseText;
   var myData = JSON.parse(jsonString);
+  changeTrackByDate(myData.toptracks.track);
   populateTrackList(myData.toptracks.track);
 }
 
@@ -56,10 +57,10 @@ var userRequestComplete = function(){
 var changeArtistByDate = function(artistList) {
   var lastFM = new LastFm();
 
-  var topArtistsUrl = lastFM.setCategoryType('gettopartists');
-  var topArtistsUrlWeek = lastFM.setCategoryType('gettopartists&period=7day');
-  var topArtistsUrl1Month = lastFM.setCategoryType('gettopartists&period=1month');
-  var topArtistsUrl12Month = lastFM.setCategoryType('gettopartists&period=12month');
+  var topArtistsUrl = lastFM.setCategoryType('gettopartists&limit=25');
+  var topArtistsUrlWeek = lastFM.setCategoryType('gettopartists&period=7day&limit=25');
+  var topArtistsUrl1Month = lastFM.setCategoryType('gettopartists&period=1month&limit=25');
+  var topArtistsUrl12Month = lastFM.setCategoryType('gettopartists&period=12month&limit=25');
 
   var select = document.getElementById('duration-selector');
   select.addEventListener('change', function(){
@@ -80,9 +81,36 @@ var changeArtistByDate = function(artistList) {
   });
 }
 
+var changeTrackByDate = function(trackList) {
+  var lastFM = new LastFm();
+
+  var topTracksUrl = lastFM.setCategoryType('gettoptracks');
+  var topTracksUrlWeek = lastFM.setCategoryType('gettoptracks&period=7day&limit=25');
+  var topTracksUrl1Month = lastFM.setCategoryType('gettoptracks&period=1month&limit=25');
+  var topTracksUrl12Month = lastFM.setCategoryType('gettoptracks&period=12month&limit=25');
+
+  var select = document.getElementById('ttduration-selector');
+  select.addEventListener('change', function(){
+    // var topTracks = document.getElementById('top-tracks-list');
+    switch(select.selectedIndex){
+      case 0:
+      makeRequest(topTracksUrl, trackRequestComplete);
+      break;
+      case 1:
+      makeRequest(topTracksUrlWeek, trackRequestComplete);
+      break;
+      case 2:
+      makeRequest(topTracksUrl1Month, trackRequestComplete);
+      break;
+      case 3:
+      makeRequest(topTracksUrl12Month, trackRequestComplete);
+      break;
+    }
+  });
+}
+
 var populateArtistList = function(artistList){
 
-  var main = document.getElementById('main-content');
   var artistBlock = document.getElementById('artist-block');
   var headerDetails = document.getElementById('header-details');
 
@@ -124,7 +152,6 @@ var populateArtistList = function(artistList){
 }
 
 var populateRecentTrackList = function(recentTracks){
-  var main = document.getElementById('recent-tracks');
   var ul = document.getElementById('recent-track-list');
   recentTracks.forEach(function(track){
 
@@ -168,7 +195,6 @@ var populateRecentTrackList = function(recentTracks){
 }
 
 var populateTrackList = function(topTracks){
-  var main = document.getElementById('top-tracks');
   var ul = document.getElementById('top-tracks-list');
   topTracks.forEach(function(track){
 
@@ -196,18 +222,6 @@ var populateTrackList = function(topTracks){
   })
 
 }
-
-
-// var populateTrackList = function(myLastFmData){
-//   var main = document.getElementById('track-content');
-//   var ul = document.getElementById('track-list');
-//
-//   myLastFmData.forEach(function(track){
-//     var li = document.createElement('li');
-//     li.innerText = track.name + " (" + track.playcount + ")";
-//     ul.appendChild(li);
-//   })
-// }
 
 var populateUserInformation = function(user){
 

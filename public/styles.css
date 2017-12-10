@@ -9,6 +9,7 @@ body {
 
 li{
   list-style: none;
+  max-width: 80%;
 }
 
 h2{
