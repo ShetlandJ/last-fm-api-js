@@ -4,7 +4,7 @@ body {
 }
 
 #main {
-  width: 660px;
+  width: 670px;
 }
 
 li{
@@ -13,12 +13,31 @@ li{
 }
 
 h2{
-  margin-left: 20px;
+  margin-left: 50px;
 }
 
 hr{
   border: 1px solid lightgrey;
 }
+
+/*LOGO STYLING*/
+#nav {
+  width: 230px;
+  margin: 0;
+  padding-right: 50px;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+h1#logo-text {
+  text-align: center;
+  color: #B80711;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
 
 /*HEADER STYLING*/
 
@@ -31,11 +50,6 @@ header {
   background-color: black;
   display: flex;
   justify-content: center;
-}
-
-h1#logo-text {
-  text-align: center;
-  color: #B80711;
 }
 
 #header-text {
@@ -76,7 +90,7 @@ h1#logo-text {
 #recent-track-list{
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
+  padding-left: 50px;
   max-width: 660px;
 }
 
@@ -111,7 +125,7 @@ h1#logo-text {
   }
 
   #artist-block-header h2{
-    margin-bottom: -15px;
+    margin-bottom: 0px;
     margin-left: 20px;
   }
 
@@ -123,7 +137,7 @@ h1#logo-text {
 
   #artist-block{
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 50px;
   }
 
   #top-artist-text{
@@ -251,7 +265,7 @@ h1#logo-text {
   #top-tracks-list{
     display: flex;
     flex-direction: column;
-    padding-left: 20px;
+    padding-left: 50px;
     max-width: 660px;
   }
 
