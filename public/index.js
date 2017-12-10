@@ -2,16 +2,12 @@ var app = function(){
 
   var lastFM = new LastFm();
   var topArtistsUrl = lastFM.setCategoryType('gettopartists');
-
-  var topTracksUrl = lastFM.setCategoryType('gettoptracks');
-  var weeklyTracksUrl = lastFM.setCategoryType('getweeklytrackchart');
+  var topTracksUrl = lastFM.setCategoryType('gettoptracks&limit=25');
   var recentlyPlayedTracks = lastFM.setCategoryType('getRecentTracks&limit=10')
-
   var userInfo = lastFM.setCategoryType('getinfo');
 
   makeRequest(topArtistsUrl, artistRequestComplete);
   makeRequest(topTracksUrl, trackRequestComplete);
-  // makeRequest(weeklyTracksUrl, weeklyTracksComplete);
   makeRequest(userInfo, userRequestComplete)
   makeRequest(recentlyPlayedTracks, recentTrackRequestComplete)
 
@@ -28,6 +24,7 @@ var trackRequestComplete = function(){
   if (this.status !== 200) return;
   var jsonString = this.responseText;
   var myData = JSON.parse(jsonString);
+  changeTrackByDate(myData.toptracks.track);
   populateTrackList(myData.toptracks.track);
 }
 
@@ -56,10 +53,10 @@ var userRequestComplete = function(){
 var changeArtistByDate = function(artistList) {
   var lastFM = new LastFm();
 
-  var topArtistsUrl = lastFM.setCategoryType('gettopartists');
-  var topArtistsUrlWeek = lastFM.setCategoryType('gettopartists&period=7day');
-  var topArtistsUrl1Month = lastFM.setCategoryType('gettopartists&period=1month');
-  var topArtistsUrl12Month = lastFM.setCategoryType('gettopartists&period=12month');
+  var topArtistsUrl = lastFM.setCategoryType('gettopartists&limit=25');
+  var topArtistsUrlWeek = lastFM.setCategoryType('gettopartists&period=7day&limit=25');
+  var topArtistsUrl1Month = lastFM.setCategoryType('gettopartists&period=1month&limit=25');
+  var topArtistsUrl12Month = lastFM.setCategoryType('gettopartists&period=12month&limit=25');
 
   var select = document.getElementById('duration-selector');
   select.addEventListener('change', function(){
@@ -80,9 +77,37 @@ var changeArtistByDate = function(artistList) {
   });
 }
 
+var changeTrackByDate = function(trackList) {
+  var lastFM = new LastFm();
+
+  var topTracksUrl = lastFM.setCategoryType('gettoptracks');
+  var topTracksUrlWeek = lastFM.setCategoryType('gettoptracks&period=7day&limit=25');
+  var topTracksUrl1Month = lastFM.setCategoryType('gettoptracks&period=1month&limit=25');
+  var topTracksUrl12Month = lastFM.setCategoryType('gettoptracks&period=12month&limit=25');
+
+  var select = document.getElementById('ttduration-selector');
+  var ul = document.getElementById('top-tracks-list');
+  removeChildNodes(ul);
+  select.addEventListener('change', function(){
+    switch(select.selectedIndex){
+      case 0:
+      makeRequest(topTracksUrl, trackRequestComplete);
+      break;
+      case 1:
+      makeRequest(topTracksUrlWeek, trackRequestComplete);
+      break;
+      case 2:
+      makeRequest(topTracksUrl1Month, trackRequestComplete);
+      break;
+      case 3:
+      makeRequest(topTracksUrl12Month, trackRequestComplete);
+      break;
+    }
+  });
+}
+
 var populateArtistList = function(artistList){
 
-  var main = document.getElementById('main-content');
   var artistBlock = document.getElementById('artist-block');
   var headerDetails = document.getElementById('header-details');
 
@@ -124,7 +149,6 @@ var populateArtistList = function(artistList){
 }
 
 var populateRecentTrackList = function(recentTracks){
-  var main = document.getElementById('recent-tracks');
   var ul = document.getElementById('recent-track-list');
   recentTracks.forEach(function(track){
 
@@ -147,7 +171,12 @@ var populateRecentTrackList = function(recentTracks){
       now_playing_text.fontcolor = "#D3D3D3";
 
       now_playing.id = "now-playing";
-      now_playing.style.marginLeft = "10%";
+      now_playing.style.position = "absolute";
+      now_playing.style.left = "500px";
+
+      now_playing_text.style.position = "absolute";
+      now_playing_text.style.left = "515px";
+
       now_playing.src = "/images/now_playing.gif"
       now_playing.style.height = "15px";
       now_playing.style.width = "10px";
@@ -162,56 +191,34 @@ var populateRecentTrackList = function(recentTracks){
 
 }
 
-var populateTrackList = function(recentTracks){
-  var main = document.getElementById('recent-tracks');
-  var ul = document.getElementById('recent-track-list');
-  recentTracks.forEach(function(track){
+var populateTrackList = function(topTracks){
+  var ul = document.getElementById('top-tracks-list');
+  topTracks.forEach(function(track){
 
     var container = document.createElement('div');
-    container.className = "recent-track-item";
+    container.className = "top-track-item";
     container.style.flexDirection = "row";
 
     var img = document.createElement('img')
     img.src = track.image[0]['#text']
 
+    var ttli = document.createElement('li');
+    ttli.id = "tt-playcount";
+    ttli.innerText = track.playcount;
+    ttli.style.position = "absolute";
+    ttli.style.left = "500px";
+
+    container.appendChild(ttli);
+
     var li = document.createElement('li');
-    li.innerText = track.artist['#text'] + " - " + track.name;
+    li.innerText = track.artist.name + " - " + track.name;
 
     container.appendChild(img);
     container.appendChild(li);
-    if (track['@attr']) {
-      var now_playing = document.createElement('img');
-      var now_playing_text = document.createElement('li');
-      now_playing_text.id = "now-playing-text"
-      now_playing_text.fontcolor = "#D3D3D3";
-
-      now_playing.id = "now-playing";
-      now_playing.style.marginLeft = "10%";
-      now_playing.src = "/images/now_playing.gif"
-      now_playing.style.height = "15px";
-      now_playing.style.width = "10px";
-
-      now_playing_text.innerText = " now playing";
-      console.log(now_playing_text)
-      container.appendChild(now_playing);
-      container.appendChild(now_playing_text);
-    }
     ul.appendChild(container);
   })
 
 }
-
-
-// var populateTrackList = function(myLastFmData){
-//   var main = document.getElementById('track-content');
-//   var ul = document.getElementById('track-list');
-//
-//   myLastFmData.forEach(function(track){
-//     var li = document.createElement('li');
-//     li.innerText = track.name + " (" + track.playcount + ")";
-//     ul.appendChild(li);
-//   })
-// }
 
 var populateUserInformation = function(user){
 
@@ -281,6 +288,12 @@ var getMonth = function(monthNumber){
     case 12:
     return "December";
     break;
+  }
+}
+
+var removeChildNodes = function(node){
+  while (node.hasChildNodes()) {
+    node.removeChild(node.lastChild);
   }
 }
 
