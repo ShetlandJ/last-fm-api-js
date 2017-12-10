@@ -207,9 +207,8 @@ var populateRecentTrackList = function(recentTracks){
       } else if (minutesDifference > 59 && minutesDifference < 1440) {
         var hour = Math.round(minutesDifference/60);
         time_since.innerText = (Math.round(minutesDifference/60)) + ` hour${hour > 1 ? "s":""}`
-
       } else {
-        time_since.innerText = "just the date like"
+        time_since.innerText =  (date.getDay()+1) + " " + (this.getMonth(date.getMonth()+1))
       }
 
       container.appendChild(time_since);
@@ -265,7 +264,7 @@ var populateUserInformation = function(user){
 
   var month = this.getMonth(date.getMonth()+1)
 
-  realName.innerText = user.realname + " 🎶 scrobbling since: " + month + ", " + date.getFullYear();;
+  realName.innerText = user.realname + " 🎶 scrobbling since: " + month + ", " + date.getFullYear();
 }
 
 var formatNumber = function(num) {
