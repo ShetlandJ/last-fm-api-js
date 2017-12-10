@@ -182,7 +182,8 @@ var populateRecentTrackList = function(recentTracks){
       now_playing.style.width = "10px";
 
       now_playing_text.innerText = " now playing";
-      console.log(now_playing_text)
+
+      container.style.backgroundColor = "#FFFBCD"
       container.appendChild(now_playing);
       container.appendChild(now_playing_text);
     }

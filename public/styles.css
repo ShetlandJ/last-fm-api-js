@@ -16,6 +16,10 @@ h2{
   margin-left: 20px;
 }
 
+hr{
+  border: 1px solid lightgrey;
+}
+
 /*HEADER STYLING*/
 
 header {
@@ -25,6 +29,8 @@ header {
 
 #header-logo {
   background-color: black;
+  display: flex;
+  justify-content: center;
 }
 
 h1#logo-text {
@@ -63,6 +69,7 @@ h1#logo-text {
 
 #real-name {
   font-size: 12px;
+  margin-bottom: 50px;
 }
 
 /*RECENT TRACKS STYLING*/
