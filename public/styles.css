@@ -9,7 +9,7 @@ body {
 
 li{
   list-style: none;
-  max-width: 80%;
+  max-width: 55%;
 }
 
 h2{
@@ -84,6 +84,7 @@ header {
 #real-name {
   font-size: 12px;
   margin-bottom: 50px;
+  color: #F9F9F9;
 }
 
 /*RECENT TRACKS STYLING*/

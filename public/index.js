@@ -151,7 +151,6 @@ var populateArtistList = function(artistList){
 var populateRecentTrackList = function(recentTracks){
   var ul = document.getElementById('recent-track-list');
   recentTracks.forEach(function(track){
-
     var container = document.createElement('div');
     container.className = "recent-track-item";
     container.style.flexDirection = "row";
@@ -164,10 +163,13 @@ var populateRecentTrackList = function(recentTracks){
 
     container.appendChild(img);
     container.appendChild(li);
+
     if (track['@attr']) {
+      // time_since_played.innerText = "";
       var now_playing = document.createElement('img');
       var now_playing_text = document.createElement('li');
-      now_playing_text.id = "now-playing-text"
+
+      now_playing_text.id = "now-playing-text";
       now_playing_text.fontcolor = "#D3D3D3";
 
       now_playing.id = "now-playing";
@@ -186,10 +188,34 @@ var populateRecentTrackList = function(recentTracks){
       container.style.backgroundColor = "#FFFBCD"
       container.appendChild(now_playing);
       container.appendChild(now_playing_text);
+    } else {
+
+      var time_since = document.createElement('li');
+      time_since.id = "now-playing-text";
+      time_since.fontcolor = "#D3D3D3";
+      time_since.style.position = "absolute";
+      time_since.style.left = "500px";
+
+      var time_since_played = new Date(track.date.uts);
+
+      date = new Date();
+      var difference = date.getTime() - (track.date.uts * 1000);
+
+      var minutesDifference = Math.floor(difference/1000/60);
+      if (minutesDifference < 60) {
+        time_since.innerText = minutesDifference + ` minute${minutesDifference > 1 ? "s":""}`
+      } else if (minutesDifference > 59 && minutesDifference < 1440) {
+        var hour = Math.round(minutesDifference/60);
+        time_since.innerText = (Math.round(minutesDifference/60)) + ` hour${hour > 1 ? "s":""}`
+      } else {
+        time_since.innerText =  (date.getDay()+1) + " " + (this.getMonth(date.getMonth()+1))
+      }
+
+      container.appendChild(time_since);
+
     }
     ul.appendChild(container);
   })
-
 }
 
 var populateTrackList = function(topTracks){
@@ -238,7 +264,7 @@ var populateUserInformation = function(user){
 
   var month = this.getMonth(date.getMonth()+1)
 
-  realName.innerText = user.realname + " 🎶 scrobbling since: " + month + ", " + date.getFullYear();;
+  realName.innerText = user.realname + " 🎶 scrobbling since: " + month + ", " + date.getFullYear();
 }
 
 var formatNumber = function(num) {
