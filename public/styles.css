@@ -51,6 +51,16 @@ h1#logo-text {
   font-size: 12px;
 }
 
+/*ARTIST BLOCK HEADER*/
+
+#artist-block-header {
+  margin-left: 20px;
+}
+
+#artist-block-header h2{
+  margin-bottom: -15px;
+}
+
 /*ARTIST BLOCK STYLING*/
 
 #artist-block{
