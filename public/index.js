@@ -2,16 +2,12 @@ var app = function(){
 
   var lastFM = new LastFm();
   var topArtistsUrl = lastFM.setCategoryType('gettopartists');
-
   var topTracksUrl = lastFM.setCategoryType('gettoptracks&limit=25');
-  // var weeklyTracksUrl = lastFM.setCategoryType('getweeklytrackchart');
   var recentlyPlayedTracks = lastFM.setCategoryType('getRecentTracks&limit=10')
-
   var userInfo = lastFM.setCategoryType('getinfo');
 
   makeRequest(topArtistsUrl, artistRequestComplete);
   makeRequest(topTracksUrl, trackRequestComplete);
-  // makeRequest(weeklyTracksUrl, weeklyTracksComplete);
   makeRequest(userInfo, userRequestComplete)
   makeRequest(recentlyPlayedTracks, recentTrackRequestComplete)
 
@@ -90,8 +86,9 @@ var changeTrackByDate = function(trackList) {
   var topTracksUrl12Month = lastFM.setCategoryType('gettoptracks&period=12month&limit=25');
 
   var select = document.getElementById('ttduration-selector');
+  var ul = document.getElementById('top-tracks-list');
+  removeChildNodes(ul);
   select.addEventListener('change', function(){
-    // var topTracks = document.getElementById('top-tracks-list');
     switch(select.selectedIndex){
       case 0:
       makeRequest(topTracksUrl, trackRequestComplete);
@@ -291,6 +288,12 @@ var getMonth = function(monthNumber){
     case 12:
     return "December";
     break;
+  }
+}
+
+var removeChildNodes = function(node){
+  while (node.hasChildNodes()) {
+    node.removeChild(node.lastChild);
   }
 }
 
