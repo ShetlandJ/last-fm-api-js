@@ -61,15 +61,18 @@ var populateArtistList = function(artistList){
   var artist4 = document.getElementById('artist4');
   var artist5 = document.getElementById('artist5');
 
-  artist1.innerHTML = "<p>"+topFive[0].name+"</p><p>"+topFive[0].playcount+" plays </p>";
+  artist1.innerHTML = "<p id='top-artist'>"+topFive[0].name+"</p><p>"+topFive[0].playcount+" plays </p>";
+  document.getElementById('top-artist').style.fontSize = "18px";
 
-  artist2.innerHTML = "<p>"+topFour[0].name+"</p><p>"+topFour[0].playcount+" plays </p>";
+  artist2.innerHTML = "<p class='artist-square-item'>"+topFour[0].name+"</p><p>"+topFour[0].playcount+" plays </p>";
 
-  artist3.innerHTML = "<p>"+topFour[1].name+"</p><p>"+topFour[1].playcount+" plays </p>";
+  artist3.innerHTML = "<p class='artist-square-item'>"+topFour[1].name+"</p><p>"+topFour[1].playcount+" plays </p>";
 
-  artist4.innerHTML = "<p>"+topFour[2].name+"</p><p>"+topFour[2].playcount+" plays </p>";
+  artist4.innerHTML = "<p class='artist-square-item'>"+topFour[2].name+"</p><p>"+topFour[2].playcount+" plays </p>";
 
-  artist5.innerHTML = "<p>"+topFour[3].name+"</p><p>"+topFour[3].playcount+" plays </p>";
+  artist5.innerHTML = "<p class='artist-square-item'>"+topFour[3].name+"</p><p>"+topFour[3].playcount+" plays </p>";
+
+  // document.getElementsByClassName('artist-square-item').style.fontSize = "14px";
 
   artist1.style.backgroundImage = "url(" +topFive[0].image[3]['#text'] + ")";
   artist2.style.backgroundImage = "url(" +topFour[0].image[2]['#text'] + ")";
