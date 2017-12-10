@@ -107,10 +107,21 @@ var populateUserInformation = function(user){
   var username = document.getElementById('username');
   var realName = document.getElementById('real-name');
   var userTracks = document.getElementById('total-tracks-played');
+  var memberSince = document.getElementById('member-since');
 
   username.innerText = user.name;
   realName.innerText = user.realname;
   userTracks.innerText = "Scrobbles: " + user.playcount;
+
+  var date = new Date(user.registered['#text'] * 1000);
+
+  var month = ""
+  if ((date.getMonth()+1) === 3) {
+    month = "March"
+  }
+
+  memberSince.innerText = "Member since: " + month + ", " + date.getFullYear();
+
 }
 
 window.addEventListener('load', app)

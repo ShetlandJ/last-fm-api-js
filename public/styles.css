@@ -31,6 +31,7 @@ header {
 .header-text-details {
   color: #666666;
   text-align: center;
+  margin: 0;
 }
 
 #profile-picture img {
@@ -39,6 +40,9 @@ header {
   margin: 10px 25px 10px 25px;
 }
 
+#username {
+  font-size: 30px;
+}
 
 /*ARTIST BLOCK STYLING*/
 
