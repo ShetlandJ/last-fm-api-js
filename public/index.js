@@ -108,16 +108,64 @@ var populateUserInformation = function(user){
   var memberSince = document.getElementById('member-since');
 
   username.innerText = user.name;
-  userTracks.innerText = "Scrobbles: " + user.playcount;
+  userTracks.innerText = "Scrobbles: " + this.formatNumber(user.playcount);
 
   var date = new Date(user.registered['#text'] * 1000);
 
-  var month = ""
-  if ((date.getMonth()+1) === 3) {
-    month = "March"
-  }
+  var month = this.getMonth(date.getMonth()+1)
 
   realName.innerText = user.realname + " 🎶 scrobbling since: " + month + ", " + date.getFullYear();;
+}
+
+var formatNumber = function(num) {
+  var array = num.toString().split('');
+  var index = -3;
+  while (array.length + index > 0) {
+    array.splice(index, 0, ',');
+    index -= 4;
+  }
+  return array.join('');
+};
+
+var getMonth = function(monthNumber){
+  switch(monthNumber) {
+    case 1:
+    return "January";
+    break;
+    case 2:
+    return "February"
+    break;
+    case 3:
+    return "March";
+    break;
+    case 4:
+    return "April";
+    break;
+    case 5:
+    return "May";
+    break;
+    case 6:
+    return "June";
+    break;
+    case 7:
+    return "July";
+    break;
+    case 8:
+    return "August"
+    break;
+    case 9:
+    return "September";
+    break;
+    case 10:
+    return "October";
+    break;
+    case 11:
+    return "November";
+    break;
+    case 12:
+    return "December";
+    break;
+  }
 }
 
 window.addEventListener('load', app)

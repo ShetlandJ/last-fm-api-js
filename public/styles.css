@@ -3,15 +3,12 @@ body {
   font-family: 'Open Sans',Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif
 }
 
-/*PROFILE PICTURE STYLING*/
-
 /*HEADER STYLING*/
 
 header {
   display: flex;
   flex-direction: column;
 }
-
 
 #header-logo {
   background-color: black;
@@ -46,6 +43,8 @@ h1#logo-text {
 
 #username {
   font-size: 30px;
+  font-weight: 700;
+  color: white;
 }
 
 #real-name {
@@ -138,6 +137,7 @@ img.small-artist-image{
   font-size: 14px;
   text-shadow: 0 0 10px rgba(0,0,0,.7);
 }
+
 .small-artist-square-playcount {
   font-size: 12px;
 }
