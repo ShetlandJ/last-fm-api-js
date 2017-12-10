@@ -67,19 +67,19 @@ var populateArtistList = function(artistList){
 
 
   artist1name.innerText = topFive[0].name;
-  artist1playcount.innerText = topFive[0].playcount;
+  artist1playcount.innerText = topFive[0].playcount + " plays";
 
   artist2name.innerText = topFour[0].name;
-  artist2playcount.innerText = topFour[0].playcount;
+  artist2playcount.innerText = topFour[0].playcount + " plays";
 
   artist3name.innerText = topFour[1].name;
-  artist3playcount.innerText = topFour[1].playcount;
+  artist3playcount.innerText = topFour[1].playcount + " plays";
 
   artist4name.innerText = topFour[2].name;
-  artist4playcount.innerText = topFour[2].playcount;
+  artist4playcount.innerText = topFour[2].playcount + " plays";
 
   artist5name.innerText = topFour[3].name;
-  artist5playcount.innerText = topFour[3].playcount;
+  artist5playcount.innerText = topFour[3].playcount + " plays";
 
 
   // document.getElementById('top-artist').style.fontSize = "18px";
