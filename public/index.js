@@ -9,9 +9,8 @@ var app = function(){
 
   var userInfo = lastFM.setCategoryType('getinfo');
 
-
   makeRequest(topArtistsUrl, artistRequestComplete);
-  // makeRequest(topTracksUrl, trackRequestComplete);
+  makeRequest(topTracksUrl, trackRequestComplete);
   // makeRequest(weeklyTracksUrl, weeklyTracksComplete);
   makeRequest(userInfo, userRequestComplete)
   makeRequest(recentlyPlayedTracks, recentTrackRequestComplete)
@@ -163,17 +162,56 @@ var populateRecentTrackList = function(recentTracks){
 
 }
 
+var populateTrackList = function(recentTracks){
+  var main = document.getElementById('recent-tracks');
+  var ul = document.getElementById('recent-track-list');
+  recentTracks.forEach(function(track){
 
-var populateTrackList = function(myLastFmData){
-  var main = document.getElementById('track-content');
-  var ul = document.getElementById('track-list');
+    var container = document.createElement('div');
+    container.className = "recent-track-item";
+    container.style.flexDirection = "row";
 
-  myLastFmData.forEach(function(track){
+    var img = document.createElement('img')
+    img.src = track.image[0]['#text']
+
     var li = document.createElement('li');
-    li.innerText = track.name + " (" + track.playcount + ")";
-    ul.appendChild(li);
+    li.innerText = track.artist['#text'] + " - " + track.name;
+
+    container.appendChild(img);
+    container.appendChild(li);
+    if (track['@attr']) {
+      var now_playing = document.createElement('img');
+      var now_playing_text = document.createElement('li');
+      now_playing_text.id = "now-playing-text"
+      now_playing_text.fontcolor = "#D3D3D3";
+
+      now_playing.id = "now-playing";
+      now_playing.style.marginLeft = "10%";
+      now_playing.src = "/images/now_playing.gif"
+      now_playing.style.height = "15px";
+      now_playing.style.width = "10px";
+
+      now_playing_text.innerText = " now playing";
+      console.log(now_playing_text)
+      container.appendChild(now_playing);
+      container.appendChild(now_playing_text);
+    }
+    ul.appendChild(container);
   })
+
 }
+
+
+// var populateTrackList = function(myLastFmData){
+//   var main = document.getElementById('track-content');
+//   var ul = document.getElementById('track-list');
+//
+//   myLastFmData.forEach(function(track){
+//     var li = document.createElement('li');
+//     li.innerText = track.name + " (" + track.playcount + ")";
+//     ul.appendChild(li);
+//   })
+// }
 
 var populateUserInformation = function(user){
 
