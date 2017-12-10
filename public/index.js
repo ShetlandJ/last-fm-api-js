@@ -50,27 +50,44 @@ var populateArtistList = function(artistList){
   var headerDetails = document.getElementById('header-details');
 
   var topFive = artistList.splice(0, 5);
+  var topFour = topFive.splice(1, 5);
 
-  topFive.forEach(function(artist, index){
 
-    var artistPhoto = document.createElement('img');
-    var artistName = document.createElement('p');
-    var artistPlays = document.createElement('p');
+  console.log(topFive[0].image[0]['#text'])
 
-    for (var picture of artist.image) {
-      artistPhoto.src = picture['#text'];
-    }
-    artistName.innerText = artist.name;
-    artistPlays.innerText = artist.playcount
+  var artist1 = document.getElementById('artist1');
+  var artist2 = document.getElementById('artist2');
+  var artist3 = document.getElementById('artist3');
+  var artist4 = document.getElementById('artist4');
+  var artist5 = document.getElementById('artist5');
 
-    artistBlock.appendChild(artistPhoto);
-    artistBlock.appendChild(artistName);
-    artistBlock.appendChild(artistPlays);
-    // var li = document.createElement('li');
-    // li.innerText = artist.name + " (" + artist.playcount + ")";
-    // ul.appendChild(li);
+  artist1.style.backgroundImage = "url(" +topFive[0].image[3]['#text'] + ")";
+  artist2.style.backgroundImage = "url(" +topFour[0].image[2]['#text'] + ")";
+  artist3.style.backgroundImage = "url(" +topFour[1].image[2]['#text'] + ")";
+  artist4.style.backgroundImage = "url(" +topFour[2].image[2]['#text'] + ")";
+  artist5.style.backgroundImage = "url(" +topFour[3].image[2]['#text'] + ")";
 
-  })
+
+  // fopFour.forEach(function(artist, index){
+
+
+    // var artistPhoto = document.createElement('img');
+    // var artistText = document.createElement('div');
+    // artistText.id = "artist-text";
+    // var artistName = document.createElement('p');
+    // var artistPlays = document.createElement('p');
+    //
+    // for (var picture of artist.image) {
+    //   artistPhoto.src = picture['#text'];
+    // }
+    // artistName.innerText = artist.name;
+    // artistPlays.innerText = artist.playcount
+    //
+    // artistText.appendChild(artistName);
+    // artistText.appendChild(artistPlays);
+    // artistBlock.appendChild(artistPhoto);
+    // artistBlock.appendChild(artistText);
+  // })
 }
 
 var populateTrackList = function(myLastFmData){

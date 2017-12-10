@@ -33,7 +33,80 @@ header {
 img#profile-picture {
   width: auto;
   max-height: 250px;
-    background-repeat: no-repeat;
-    background-position: 50%;
-    border-radius: 25%/50%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 25%/50%;
+}
+
+/*ARTIST BLOCK STYLING*/
+
+#artist-block {
+  display: flex;
+}
+
+#artist-block {
+  display: flex;
+}
+
+#artist1 {
+  width: 310px;
+  height: 310px;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#artist-squares {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 310px
+}
+
+.small-artist-square {
+  width: 155px;
+  height: 155px;
+  padding: 0;
+  float: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/*#artist2{
+  width: 155px;
+  height: 155px;
+  padding: 0;
+  float: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+#artist3 {
+  width: 155px;
+  height: 155px;
+  padding: 0;
+  float: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}*/
+
+#artist4{
+  /*width: 155px;
+  height: 155px;
+  padding: 0;
+  float: left;*/
+  clear: left;
+  /*background-repeat: no-repeat;
+  background-size: cover;*/
+
+}
+
+#artist5{
+  /*width: 155px;
+  height: 155px;
+  padding: 0;
+  float: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+*/
 }
