@@ -43,7 +43,9 @@ var userRequestComplete = function(){
   populateUserInformation(myData.user);
 }
 
+}
 var populateArtistList = function(artistList){
+
   var main = document.getElementById('main-content');
   var artistBlock = document.getElementById('artist-block');
   var headerDetails = document.getElementById('header-details');
