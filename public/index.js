@@ -107,25 +107,31 @@ var populateRecentTrackList = function(recentTracks){
     var img = document.createElement('img')
     img.src = track.image[0]['#text']
 
-
     var li = document.createElement('li');
-    li.innerText = track.name
+    li.innerText = track.artist['#text'] + " - " + track.name;
 
+    container.appendChild(img);
+    container.appendChild(li);
     if (track['@attr']) {
       var now_playing = document.createElement('img');
-      now_playing.src = "/images/now_playing.gif"
-      li.appendChild(now_playing);
-    }
+      var now_playing_text = document.createElement('li');
+      now_playing_text.id = "now-playing-text"
+      now_playing_text.fontcolor = "#D3D3D3";
 
-    container.appendChild(img)
-    container.appendChild(li);
+      now_playing.id = "now-playing";
+      now_playing.style.marginLeft = "10%";
+      now_playing.src = "/images/now_playing.gif"
+      now_playing.style.height = "15px";
+      now_playing.style.width = "10px";
+
+      now_playing_text.innerText = " now playing";
+      console.log(now_playing_text)
+      container.appendChild(now_playing);
+      container.appendChild(now_playing_text);
+    }
     ul.appendChild(container);
   })
 
-  if (recentTracks[0]['@attr']) {
-    now_playing.src = "/images/now_playing.gif"
-    ul.appendChild(now_playing.src);
-  }
 }
 
 

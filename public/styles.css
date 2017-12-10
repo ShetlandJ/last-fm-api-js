@@ -7,6 +7,10 @@ body {
   width: 660px;
 }
 
+li{
+  list-style: none;
+}
+
 /*HEADER STYLING*/
 
 header {
@@ -70,6 +74,7 @@ h2{
 .recent-track-item{
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .recent-track-item img{
@@ -79,6 +84,16 @@ h2{
 .recent-track-item:nth-child(even){
     background-color: #F9F9F9;
 }​
+
+img#now-playing{
+  margin-left: 25%;
+}
+
+#now-playing-text{
+  color: #666666;
+  font-size: 12px;
+}
+
 
 /*ARTIST BLOCK HEADER*/
 
