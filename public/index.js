@@ -102,6 +102,9 @@ var populateTrackList = function(myLastFmData){
 
 var populateUserInformation = function(user){
 
+  var profilePicture = document.getElementById('profile-picture-image');
+  profilePicture.src = user.image[2]['#text']
+
   var username = document.getElementById('username');
   var realName = document.getElementById('real-name');
   var userTracks = document.getElementById('total-tracks-played');

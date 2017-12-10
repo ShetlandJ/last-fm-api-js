@@ -41,12 +41,11 @@ header {
   text-align: center;
 }
 
-img#profile-picture {
-  width: auto;
-  max-height: 250px;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  border-radius: 25%/50%;
+#profile-picture img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  border-radius: 50%;
 }
 
 /*ARTIST BLOCK STYLING*/
