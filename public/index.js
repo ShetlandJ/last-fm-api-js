@@ -103,14 +103,29 @@ var populateRecentTrackList = function(recentTracks){
     var container = document.createElement('div');
     container.className = "recent-track-item";
     container.style.flexDirection = "row";
+
     var img = document.createElement('img')
     img.src = track.image[0]['#text']
+
+
     var li = document.createElement('li');
     li.innerText = track.name
+
+    if (track['@attr']) {
+      var now_playing = document.createElement('img');
+      now_playing.src = "/images/now_playing.gif"
+      li.appendChild(now_playing);
+    }
+
     container.appendChild(img)
     container.appendChild(li);
     ul.appendChild(container);
   })
+
+  if (recentTracks[0]['@attr']) {
+    now_playing.src = "/images/now_playing.gif"
+    ul.appendChild(now_playing.src);
+  }
 }
 
 
