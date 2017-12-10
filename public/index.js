@@ -4,6 +4,7 @@ var app = function(){
   var topArtistsUrl = lastFM.setCategoryType('gettopartists');
   var topTracksUrl = lastFM.setCategoryType('gettoptracks');
   var weeklyTracksUrl = lastFM.setCategoryType('getweeklytrackchart');
+  var recentlyPlayedTracks = lastFM.setCategoryType('getRecentTracks&limit=10')
 
   var userInfo = lastFM.setCategoryType('getinfo');
 
@@ -12,6 +13,7 @@ var app = function(){
   // makeRequest(topTracksUrl, trackRequestComplete);
   // makeRequest(weeklyTracksUrl, weeklyTracksComplete);
   makeRequest(userInfo, userRequestComplete)
+  makeRequest(recentlyPlayedTracks, recentTrackRequestComplete)
 
 }
 
@@ -29,6 +31,13 @@ var trackRequestComplete = function(){
   populateTrackList(myData.toptracks.track);
 }
 
+var recentTrackRequestComplete = function(){
+  if (this.status !== 200) return;
+  var jsonString = this.responseText;
+  var myData = JSON.parse(jsonString);
+  populateRecentTrackList(myData.recenttracks.track);
+}
+
 var artistRequestComplete = function(){
   if (this.status !== 200) return;
   var jsonString = this.responseText;
@@ -43,7 +52,6 @@ var userRequestComplete = function(){
   populateUserInformation(myData.user);
 }
 
-}
 var populateArtistList = function(artistList){
 
   var main = document.getElementById('main-content');
@@ -87,6 +95,25 @@ var populateArtistList = function(artistList){
   var artistFiveImage = document.getElementById('artist-five-image').src = topFour[3].image[2]['#text'];
 }
 
+var populateRecentTrackList = function(recentTracks){
+  var main = document.getElementById('recent-tracks');
+  var ul = document.getElementById('recent-track-list');
+  recentTracks.forEach(function(track){
+
+    var container = document.createElement('div');
+    container.className = "recent-track-item";
+    container.style.flexDirection = "row";
+    var img = document.createElement('img')
+    img.src = track.image[0]['#text']
+    var li = document.createElement('li');
+    li.innerText = track.name
+    container.appendChild(img)
+    container.appendChild(li);
+    ul.appendChild(container);
+  })
+}
+
+
 var populateTrackList = function(myLastFmData){
   var main = document.getElementById('track-content');
   var ul = document.getElementById('track-list');
@@ -95,7 +122,6 @@ var populateTrackList = function(myLastFmData){
     var li = document.createElement('li');
     li.innerText = track.name + " (" + track.playcount + ")";
     ul.appendChild(li);
-    counter++;
   })
 }
 

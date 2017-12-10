@@ -55,6 +55,30 @@ h1#logo-text {
   font-size: 12px;
 }
 
+/*RECENT TRACKS STYLING*/
+#recent-track-list{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+}
+
+h2{
+  margin-left: 20px;
+}
+
+.recent-track-item{
+  display: flex;
+  flex-direction: row;
+}
+
+.recent-track-item img{
+  padding-right: 8px;
+}
+
+.recent-track-item:nth-child(even){
+    background-color: #F9F9F9;
+}​
+
 /*ARTIST BLOCK HEADER*/
 
 #artist-block-header {
@@ -63,6 +87,7 @@ h1#logo-text {
 
 #artist-block-header h2{
   margin-bottom: -15px;
+  margin-left: 20px;
 }
 
 #duration-selector {
