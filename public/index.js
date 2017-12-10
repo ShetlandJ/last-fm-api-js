@@ -11,7 +11,7 @@ var app = function(){
   makeRequest(topTracksUrl, trackRequestComplete);
   makeRequest(userInfo, userRequestComplete);
   makeRequest(recentlyPlayedTracks, recentTrackRequestComplete);
-  makeRequest(topAlbumsUrl, albumsRequestComplete);
+  makeRequest(topAlbumsUrl, albumRequestComplete);
 
 }
 
@@ -23,11 +23,11 @@ var makeRequest = function(url, callback){
 }
 
 
-var albumsRequestComplete = function(){
+var albumRequestComplete = function(){
   if (this.status !== 200) return;
   var jsonString = this.responseText;
   var myData = JSON.parse(jsonString);
-  // changeTrackByDate(myData.toptracks.track);
+  changeAlbumByDate(myData.topalbums.album);
   populateAlbumList(myData.topalbums.album);
 }
 
@@ -87,6 +87,34 @@ var changeArtistByDate = function(artistList) {
     }
   });
 }
+
+var changeAlbumByDate = function(albumList) {
+  var lastFM = new LastFm();
+
+  var topAlbumsUrl = lastFM.setCategoryType('gettopalbums&limit=25');
+  var topAlbumUrlWeek = lastFM.setCategoryType('gettopalbums&period=7day&limit=25');
+  var topAlbumUrl1Month = lastFM.setCategoryType('gettopalbums&period=1month&limit=25');
+  var topAlbumUrl12Month = lastFM.setCategoryType('gettopalbums&period=12month&limit=25');
+
+  var select = document.getElementById('album-duration-selector');
+  select.addEventListener('change', function(){
+    switch(select.selectedIndex){
+      case 0:
+      makeRequest(topAlbumUrl, albumRequestComplete);
+      break;
+      case 1:
+      makeRequest(topAlbumUrlWeek, albumRequestComplete);
+      break;
+      case 2:
+      makeRequest(topAlbumUrl1Month, albumRequestComplete);
+      break;
+      case 3:
+      makeRequest(topAlbumUrl12Month, albumRequestComplete);
+      break;
+    }
+  });
+}
+
 
 var changeTrackByDate = function(trackList) {
   var lastFM = new LastFm();
@@ -160,7 +188,6 @@ var populateArtistList = function(artistList){
 
 
 var populateAlbumList = function(albumList){
-console.log(albumList);
   var albumBlock = document.getElementById('album-block');
 
   var topFive = albumList.splice(0, 5);

@@ -20,6 +20,11 @@ hr{
   border: 1px solid lightgrey;
 }
 
+select {
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
 /*LOGO STYLING*/
 #nav {
   width: 230px;
@@ -275,9 +280,9 @@ header {
     margin-left: 20px;
   }
 
-  /*#duration-selector {
+  #album-duration-selector {
     float: right;
-  }*/
+  }
 
   /*ALBUM BLOCK STYLING*/
 
@@ -407,9 +412,8 @@ header {
     padding-bottom: 15px;
   }
 
-/*####################################################*/
-
   /*TOP TRACKS STYLING*/
+
   #top-tracks-list{
     display: flex;
     flex-direction: column;
