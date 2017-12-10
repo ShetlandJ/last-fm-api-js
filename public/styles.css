@@ -3,6 +3,14 @@ body {
   font-family: 'Open Sans',Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif
 }
 
+img {
+  filter: brightness(50%);
+}
+
+#top-artist-text{
+  position: absolute;
+}
+
 /*HEADER STYLING*/
 
 header {

@@ -92,7 +92,9 @@ var populateArtistList = function(artistList){
   //
   // artist5.innerHTML = "<p>"+topFour[3].name+"</p><p class='artist-square-playcount'>"+topFour[3].playcount+" plays </p>";
 
-  artist1.style.backgroundImage = "url(" +topFive[0].image[3]['#text'] + ")";
+  var a1i = document.getElementById('top-artist-image');
+  a1i.src = topFive[0].image[3]['#text']
+  // artist1.style.backgroundImage = "url(" +topFive[0].image[3]['#text'] + ")";
   artist2.style.backgroundImage = "url(" +topFour[0].image[2]['#text'] + ")";
   artist3.style.backgroundImage = "url(" +topFour[1].image[2]['#text'] + ")";
   artist4.style.backgroundImage = "url(" +topFour[2].image[2]['#text'] + ")";
