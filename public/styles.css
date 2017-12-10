@@ -259,3 +259,19 @@ p#artist5playcount {
 .top-track-item:nth-child(even){
     background-color: #F9F9F9;
 }​
+
+li#tt-playcount{
+  left: 500px;
+}
+
+#ttduration-selector {
+  float: right;
+}
+
+#tt-header {
+  margin-left: 20px;
+}
+
+#tt-header h2{
+  margin-left: 20px;
+}

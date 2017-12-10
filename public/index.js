@@ -147,7 +147,12 @@ var populateRecentTrackList = function(recentTracks){
       now_playing_text.fontcolor = "#D3D3D3";
 
       now_playing.id = "now-playing";
-      now_playing.style.marginLeft = "10%";
+      now_playing.style.position = "absolute";
+      now_playing.style.left = "500px";
+
+      now_playing_text.style.position = "absolute";
+      now_playing_text.style.left = "515px";
+
       now_playing.src = "/images/now_playing.gif"
       now_playing.style.height = "15px";
       now_playing.style.width = "10px";
@@ -173,6 +178,14 @@ var populateTrackList = function(topTracks){
 
     var img = document.createElement('img')
     img.src = track.image[0]['#text']
+
+    var ttli = document.createElement('li');
+    ttli.id = "tt-playcount";
+    ttli.innerText = track.playcount;
+    ttli.style.position = "absolute";
+    ttli.style.left = "500px";
+
+    container.appendChild(ttli);
 
     var li = document.createElement('li');
     li.innerText = track.artist.name + " - " + track.name;
