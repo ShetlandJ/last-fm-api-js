@@ -1,5 +1,6 @@
 body {
   margin: 0 auto;
+  font-family: 'Open Sans', sans-serif;
 }
 
 /*HEADER STYLING*/
@@ -7,7 +8,7 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Open Sans', sans-serif;*/
 }
 
 #header-logo {
@@ -50,6 +51,15 @@ img#profile-picture {
   height: 310px;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#artist1 p {
+  color: white;
+  padding: 0;
+  margin: 0;
 }
 
 #artist-squares {
@@ -65,8 +75,18 @@ img#profile-picture {
   float: left;
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
 }
 
+.small-artist-square p {
+  font-weight: bold;
+  padding: 0;
+  margin: 0;
+  color: white;
+}
 
 #artist4{
   clear: left;
