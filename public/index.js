@@ -3,13 +3,15 @@ var app = function(){
   var lastFM = new LastFm();
   var topArtistsUrl = lastFM.setCategoryType('gettopartists');
   var topTracksUrl = lastFM.setCategoryType('gettoptracks&limit=25');
-  var recentlyPlayedTracks = lastFM.setCategoryType('getRecentTracks&limit=10')
+  var recentlyPlayedTracks = lastFM.setCategoryType('getRecentTracks&limit=10');
+  var topAlbumsUrl = lastFM.setCategoryType('gettopalbums');
   var userInfo = lastFM.setCategoryType('getinfo');
 
   makeRequest(topArtistsUrl, artistRequestComplete);
   makeRequest(topTracksUrl, trackRequestComplete);
-  makeRequest(userInfo, userRequestComplete)
-  makeRequest(recentlyPlayedTracks, recentTrackRequestComplete)
+  makeRequest(userInfo, userRequestComplete);
+  makeRequest(recentlyPlayedTracks, recentTrackRequestComplete);
+  makeRequest(topAlbumsUrl, albumRequestComplete);
 
 }
 
@@ -18,6 +20,15 @@ var makeRequest = function(url, callback){
   request.open("GET", url);
   request.addEventListener("load", callback);
   request.send();
+}
+
+
+var albumRequestComplete = function(){
+  if (this.status !== 200) return;
+  var jsonString = this.responseText;
+  var myData = JSON.parse(jsonString);
+  changeAlbumByDate(myData.topalbums.album);
+  populateAlbumList(myData.topalbums.album);
 }
 
 var trackRequestComplete = function(){
@@ -77,6 +88,34 @@ var changeArtistByDate = function(artistList) {
   });
 }
 
+var changeAlbumByDate = function(albumList) {
+  var lastFM = new LastFm();
+
+  var topAlbumsUrl = lastFM.setCategoryType('gettopalbums&limit=25');
+  var topAlbumUrlWeek = lastFM.setCategoryType('gettopalbums&period=7day&limit=25');
+  var topAlbumUrl1Month = lastFM.setCategoryType('gettopalbums&period=1month&limit=25');
+  var topAlbumUrl12Month = lastFM.setCategoryType('gettopalbums&period=12month&limit=25');
+
+  var select = document.getElementById('album-duration-selector');
+  select.addEventListener('change', function(){
+    switch(select.selectedIndex){
+      case 0:
+      makeRequest(topAlbumUrl, albumRequestComplete);
+      break;
+      case 1:
+      makeRequest(topAlbumUrlWeek, albumRequestComplete);
+      break;
+      case 2:
+      makeRequest(topAlbumUrl1Month, albumRequestComplete);
+      break;
+      case 3:
+      makeRequest(topAlbumUrl12Month, albumRequestComplete);
+      break;
+    }
+  });
+}
+
+
 var changeTrackByDate = function(trackList) {
   var lastFM = new LastFm();
 
@@ -109,7 +148,6 @@ var changeTrackByDate = function(trackList) {
 var populateArtistList = function(artistList){
 
   var artistBlock = document.getElementById('artist-block');
-  var headerDetails = document.getElementById('header-details');
 
   var topFive = artistList.splice(0, 5);
   var topFour = topFive.splice(1, 5);
@@ -147,6 +185,50 @@ var populateArtistList = function(artistList){
   var artistFourImage = document.getElementById('artist-four-image').src = topFour[2].image[2]['#text'];
   var artistFiveImage = document.getElementById('artist-five-image').src = topFour[3].image[2]['#text'];
 }
+
+
+var populateAlbumList = function(albumList){
+  var albumBlock = document.getElementById('album-block');
+
+  var topFive = albumList.splice(0, 5);
+  var topFour = topFive.splice(1, 5);
+
+  var album1 = document.getElementById('album1');
+  var album1name = document.getElementById('top-album-square-name');
+  var album1playcount = document.getElementById('top-album-square-playcount');
+
+  var album2 = document.getElementById('album2');
+  var album3 = document.getElementById('album3');
+  var album4 = document.getElementById('album4');
+  var album4 = document.getElementById('album4');
+
+  var smallAlbumsBoxName = document.getElementsByClassName('small-album-square-name');
+  var smallAlbumsBoxPlaycount = document.getElementsByClassName('small-album-square-playcount');
+
+  album1name.innerText = topFive[0].name;
+  album1playcount.innerText = topFive[0].playcount + " plays";
+
+  album2name.innerText = topFour[0].name;
+  album2playcount.innerText = topFour[0].playcount + " plays";
+
+  album3name.innerText = topFour[1].name;
+  album3playcount.innerText = topFour[1].playcount + " plays";
+
+  album4name.innerText = topFour[2].name;
+  album4playcount.innerText = topFour[2].playcount + " plays";
+
+  album5name.innerText = topFour[3].name;
+  album5playcount.innerText = topFour[3].playcount + " plays";
+
+  var albumOneImage = document.getElementById('top-album-image').src = topFive[0].image[3]['#text'];
+  var artistTwoImage = document.getElementById('album-two-image').src = topFour[0].image[2]['#text'];
+  var artistThreeImage = document.getElementById('album-three-image').src = topFour[1].image[2]['#text'];
+  var artistFourImage = document.getElementById('album-four-image').src = topFour[2].image[2]['#text'];
+  var artistFiveImage = document.getElementById('album-five-image').src = topFour[3].image[2]['#text'];
+}
+
+
+
 
 var populateRecentTrackList = function(recentTracks){
   var ul = document.getElementById('recent-track-list');

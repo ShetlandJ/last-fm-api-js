@@ -20,6 +20,11 @@ hr{
   border: 1px solid lightgrey;
 }
 
+select {
+  font-size: 12px;
+  padding-bottom: 10px;
+}
+
 /*LOGO STYLING*/
 #nav {
   width: 230px;
@@ -262,7 +267,153 @@ header {
     padding-bottom: 15px;
   }
 
+  /*##############################################################*/
+
+  /*ALBUM BLOCK HEADER*/
+
+  #album-block-header {
+    margin-left: 20px;
+  }
+
+  #album-block-header h2{
+    margin-bottom: 0px;
+    margin-left: 20px;
+  }
+
+  #album-duration-selector {
+    float: right;
+  }
+
+  /*ALBUM BLOCK STYLING*/
+
+  #album-block{
+    margin-top: 20px;
+    margin-left: 50px;
+  }
+
+  #top-album-text{
+    position: absolute;
+  }
+
+  #top-album-image{
+    width: 310px;
+    height: 310px;
+  }
+
+  .small-album-text{
+    position:absolute;
+  }
+
+  .small-album-image {
+    height: 155px;
+    width: 155px;
+  }
+
+  img#top-album-image {
+    filter: brightness(75%);
+  }
+
+  img.small-album-image{
+    filter: brightness(65%);
+  }
+
+  #album-block {
+    display: flex;
+  }
+
+  #album1 {
+    width: 310px;
+    height: 310px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  #album1 p {
+    color: white;
+    padding: 0;
+    margin: 0;
+  }
+
+  #top-album-square-name {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  #top-album-square-playcount{
+    font-size: 12px;
+  }
+
+  #album-squares {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 310px
+  }
+
+  .small-album-square {
+    width: 155px;
+    height: 155px;
+    padding: 0;
+    float: left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    position:relative;
+  }
+
+  .small-album-square-name {
+    font-weight: 700;
+    font-size: 14px;
+    text-shadow: 0 0 10px rgba(0,0,0,.7);
+  }
+
+  .small-album-square-playcount {
+    font-size: 12px;
+  }
+
+  .small-album-square p {
+    padding: 0;
+    margin: 0;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  #album4{
+    clear: left;
+  }
+
+  #top-album-text {
+    padding-left: 15px;
+    padding-bottom: 15px;
+  }
+
+  p#album2playcount {
+    padding-bottom: 15px;
+  }
+
+  p#album3name{
+    max-width: 100%;
+  }
+
+  p#albumt3playcount {
+    padding-bottom: 15px;
+  }
+
+  p#album4playcount {
+    padding-bottom: 15px;
+  }
+
+  p#album5playcount {
+    padding-bottom: 15px;
+  }
+
   /*TOP TRACKS STYLING*/
+
   #top-tracks-list{
     display: flex;
     flex-direction: column;
