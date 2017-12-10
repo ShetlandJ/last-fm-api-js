@@ -2,6 +2,7 @@ var app = function(){
 
   var lastFM = new LastFm();
   var topArtistsUrl = lastFM.setCategoryType('gettopartists');
+
   var topTracksUrl = lastFM.setCategoryType('gettoptracks');
   var weeklyTracksUrl = lastFM.setCategoryType('getweeklytrackchart');
   var recentlyPlayedTracks = lastFM.setCategoryType('getRecentTracks&limit=10')
@@ -42,6 +43,7 @@ var artistRequestComplete = function(){
   if (this.status !== 200) return;
   var jsonString = this.responseText;
   var myData = JSON.parse(jsonString);
+  changeArtistByDate(myData.topartists.artist);
   populateArtistList(myData.topartists.artist);
 }
 
@@ -50,6 +52,33 @@ var userRequestComplete = function(){
   var jsonString = this.responseText;
   var myData = JSON.parse(jsonString);
   populateUserInformation(myData.user);
+}
+
+var changeArtistByDate = function(artistList) {
+  var lastFM = new LastFm();
+
+  var topArtistsUrl = lastFM.setCategoryType('gettopartists');
+  var topArtistsUrlWeek = lastFM.setCategoryType('gettopartists&period=7day');
+  var topArtistsUrl1Month = lastFM.setCategoryType('gettopartists&period=1month');
+  var topArtistsUrl12Month = lastFM.setCategoryType('gettopartists&period=12month');
+
+  var select = document.getElementById('duration-selector');
+  select.addEventListener('change', function(){
+    switch(select.selectedIndex){
+      case 0:
+      makeRequest(topArtistsUrl, artistRequestComplete);
+      break;
+      case 1:
+      makeRequest(topArtistsUrlWeek, artistRequestComplete);
+      break;
+      case 2:
+      makeRequest(topArtistsUrl1Month, artistRequestComplete);
+      break;
+      case 3:
+      makeRequest(topArtistsUrl12Month, artistRequestComplete);
+      break;
+    }
+  });
 }
 
 var populateArtistList = function(artistList){
