@@ -44,9 +44,6 @@ img#profile-picture {
   display: flex;
 }
 
-#artist-block {
-  display: flex;
-}
 
 #artist1 {
   width: 310px;
@@ -70,43 +67,7 @@ img#profile-picture {
   background-repeat: no-repeat;
 }
 
-/*#artist2{
-  width: 155px;
-  height: 155px;
-  padding: 0;
-  float: left;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}
-
-#artist3 {
-  width: 155px;
-  height: 155px;
-  padding: 0;
-  float: left;
-  background-repeat: no-repeat;
-  background-size: cover;
-
-}*/
 
 #artist4{
-  /*width: 155px;
-  height: 155px;
-  padding: 0;
-  float: left;*/
   clear: left;
-  /*background-repeat: no-repeat;
-  background-size: cover;*/
-
-}
-
-#artist5{
-  /*width: 155px;
-  height: 155px;
-  padding: 0;
-  float: left;
-  background-repeat: no-repeat;
-  background-size: cover;
-*/
 }
