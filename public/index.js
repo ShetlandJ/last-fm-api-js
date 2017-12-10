@@ -53,24 +53,27 @@ var populateArtistList = function(artistList){
   var topFour = topFive.splice(1, 5);
 
 
-  console.log(topFive[0].image[0]['#text'])
-
   var artist1 = document.getElementById('artist1');
+  var artist1name = document.getElementById('top-artist-square-name');
+  var artist1playcount = document.getElementById('top-artist-square-playcount');
+
   var artist2 = document.getElementById('artist2');
   var artist3 = document.getElementById('artist3');
   var artist4 = document.getElementById('artist4');
   var artist5 = document.getElementById('artist5');
 
-  artist1.innerHTML = "<p id='top-artist'>"+topFive[0].name+"</p><p>"+topFive[0].playcount+" plays </p>";
-  document.getElementById('top-artist').style.fontSize = "18px";
 
-  artist2.innerHTML = "<p class='artist-square-item'>"+topFour[0].name+"</p><p class='artist-square-playcount'>"+topFour[0].playcount+" plays </p>";
+  artist1name.innerText = topFive[0].name;
+  artist1playcount.innerText = topFive[0].playcount;
+  // document.getElementById('top-artist').style.fontSize = "18px";
 
-  artist3.innerHTML = "<p class='artist-square-item'>"+topFour[1].name+"</p><p class='artist-square-playcount'>"+topFour[1].playcount+" plays </p>";
-
-  artist4.innerHTML = "<p class='artist-square-item'>"+topFour[2].name+"</p><p class='artist-square-playcount'>"+topFour[2].playcount+" plays </p>";
-
-  artist5.innerHTML = "<p class='artist-square-item'>"+topFour[3].name+"</p><p class='artist-square-playcount'>"+topFour[3].playcount+" plays </p>";
+  // artist2.innerHTML = "<p>"+topFour[0].name+"</p><p class='artist-square-playcount'>"+topFour[0].playcount+" plays </p>";
+  //
+  // artist3.innerHTML = "<p>"+topFour[1].name+"</p><p>"+topFour[1].playcount+" plays </p>";
+  //
+  // artist4.innerHTML = "<p>"+topFour[2].name+"</p><p>"+topFour[2].playcount+" plays </p>";
+  //
+  // artist5.innerHTML = "<p>"+topFour[3].name+"</p><p class='artist-square-playcount'>"+topFour[3].playcount+" plays </p>";
 
   artist1.style.backgroundImage = "url(" +topFive[0].image[3]['#text'] + ")";
   artist2.style.backgroundImage = "url(" +topFour[0].image[2]['#text'] + ")";
