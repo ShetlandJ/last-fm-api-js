@@ -81,24 +81,11 @@ var populateArtistList = function(artistList){
   artist5name.innerText = topFour[3].name;
   artist5playcount.innerText = topFour[3].playcount + " plays";
 
-
-  // document.getElementById('top-artist').style.fontSize = "18px";
-
-  // artist2.innerHTML = "<p>"+topFour[0].name+"</p><p class='artist-square-playcount'>"+topFour[0].playcount+" plays </p>";
-  //
-  // artist3.innerHTML = "<p>"+topFour[1].name+"</p><p>"+topFour[1].playcount+" plays </p>";
-  //
-  // artist4.innerHTML = "<p>"+topFour[2].name+"</p><p>"+topFour[2].playcount+" plays </p>";
-  //
-  // artist5.innerHTML = "<p>"+topFour[3].name+"</p><p class='artist-square-playcount'>"+topFour[3].playcount+" plays </p>";
-
-  var a1i = document.getElementById('top-artist-image');
-  a1i.src = topFive[0].image[3]['#text']
-  // artist1.style.backgroundImage = "url(" +topFive[0].image[3]['#text'] + ")";
-  artist2.style.backgroundImage = "url(" +topFour[0].image[2]['#text'] + ")";
-  artist3.style.backgroundImage = "url(" +topFour[1].image[2]['#text'] + ")";
-  artist4.style.backgroundImage = "url(" +topFour[2].image[2]['#text'] + ")";
-  artist5.style.backgroundImage = "url(" +topFour[3].image[2]['#text'] + ")";
+  var artistOneImage = document.getElementById('top-artist-image').src = topFive[0].image[3]['#text'];
+  var artistTwoImage = document.getElementById('artist-two-image').src = topFour[0].image[2]['#text'];
+  var artistThreeImage = document.getElementById('artist-three-image').src = topFour[1].image[2]['#text'];
+  var artistFourImage = document.getElementById('artist-four-image').src = topFour[2].image[2]['#text'];
+  var artistFiveImage = document.getElementById('artist-five-image').src = topFour[3].image[2]['#text'];
 }
 
 var populateTrackList = function(myLastFmData){

@@ -3,13 +3,15 @@ body {
   font-family: 'Open Sans',Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif
 }
 
-img {
-  filter: brightness(50%);
+/*PROFILE PICTURE STYLING*/
+
+#profile-picture {
+  width: 185px;
+  height: 185px;
+  background-color: tomato;
+  border-radius: 50%
 }
 
-#top-artist-text{
-  position: absolute;
-}
 
 /*HEADER STYLING*/
 
@@ -48,6 +50,37 @@ img#profile-picture {
 }
 
 /*ARTIST BLOCK STYLING*/
+
+#artist-block{
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#top-artist-text{
+  position: absolute;
+}
+
+#top-artist-image{
+  width: 310px;
+  height: 310px;
+}
+
+.small-artist-text{
+  position:absolute;
+}
+
+.small-artist-image {
+  height: 155px;
+  width: 155px;
+}
+
+img#top-artist-image {
+  filter: brightness(75%);
+}
+
+img.small-artist-image{
+  filter: brightness(65%);
+}
 
 #artist-block {
   display: flex;
@@ -93,7 +126,7 @@ img#profile-picture {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  bottom: 15px;
+  position:relative;
 }
 
 .small-artist-square-name {
@@ -118,18 +151,27 @@ img#profile-picture {
   clear: left;
 }
 
+#top-artist-text {
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
 p#artist2playcount {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
+}
+
+p#artist3name{
+  max-width: 100%;
 }
 
 p#artist3playcount {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 p#artist4playcount {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
 
 p#artist5playcount {
-    padding-bottom: 15px;
+  padding-bottom: 15px;
 }
