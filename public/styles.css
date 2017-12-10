@@ -17,9 +17,13 @@ header {
   background-color: black;
 }
 
-#header-text {
-  color: #B80711;
+h1#logo-text {
   text-align: center;
+  color: #B80711;
+}
+
+#header-text {
+  padding-top: 15px;
 }
 
 #header-details {
@@ -30,7 +34,7 @@ header {
 
 .header-text-details {
   color: #666666;
-  text-align: center;
+  text-align: left;
   margin: 0;
 }
 
@@ -42,6 +46,10 @@ header {
 
 #username {
   font-size: 30px;
+}
+
+#real-name {
+  font-size: 12px;
 }
 
 /*ARTIST BLOCK STYLING*/
@@ -128,7 +136,6 @@ img.small-artist-image{
 .small-artist-square-name {
   font-weight: 700;
   font-size: 14px;
-  text-decoration: underline;
   text-shadow: 0 0 10px rgba(0,0,0,.7);
 }
 .small-artist-square-playcount {

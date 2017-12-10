@@ -45,13 +45,11 @@ var userRequestComplete = function(){
 
 var populateArtistList = function(artistList){
   var main = document.getElementById('main-content');
-  // var ul = document.getElementById('artist-list');
   var artistBlock = document.getElementById('artist-block');
   var headerDetails = document.getElementById('header-details');
 
   var topFive = artistList.splice(0, 5);
   var topFour = topFive.splice(1, 5);
-
 
   var artist1 = document.getElementById('artist1');
   var artist1name = document.getElementById('top-artist-square-name');
@@ -110,7 +108,6 @@ var populateUserInformation = function(user){
   var memberSince = document.getElementById('member-since');
 
   username.innerText = user.name;
-  realName.innerText = user.realname;
   userTracks.innerText = "Scrobbles: " + user.playcount;
 
   var date = new Date(user.registered['#text'] * 1000);
@@ -120,8 +117,7 @@ var populateUserInformation = function(user){
     month = "March"
   }
 
-  memberSince.innerText = "Member since: " + month + ", " + date.getFullYear();
-
+  realName.innerText = user.realname + " 🎶 scrobbling since: " + month + ", " + date.getFullYear();;
 }
 
 window.addEventListener('load', app)
