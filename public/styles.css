@@ -61,6 +61,10 @@ img#profile-picture {
   margin: 0;
 }
 
+#top-artist-square-name {
+  font-size: 18px;
+}
+
 #artist-squares {
   display: flex;
   flex-wrap: wrap;
@@ -78,6 +82,14 @@ img#profile-picture {
   flex-direction: column;
   justify-content: flex-end;
 
+}
+
+.small-artist-square-name {
+  font-size: 14px;
+  text-decoration: underline;
+}
+.small-artist-square-playcount {
+  font-size: 12px;
 }
 
 .small-artist-square p {

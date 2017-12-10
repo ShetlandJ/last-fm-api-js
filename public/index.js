@@ -62,9 +62,26 @@ var populateArtistList = function(artistList){
   var artist4 = document.getElementById('artist4');
   var artist5 = document.getElementById('artist5');
 
+  var smallArtistsBoxName = document.getElementsByClassName('small-artist-square-name');
+  var smallArtistsBoxPlaycount = document.getElementsByClassName('small-artist-square-playcount');
+
 
   artist1name.innerText = topFive[0].name;
   artist1playcount.innerText = topFive[0].playcount;
+
+  artist2name.innerText = topFour[0].name;
+  artist2playcount.innerText = topFour[0].playcount;
+
+  artist3name.innerText = topFour[1].name;
+  artist3playcount.innerText = topFour[1].playcount;
+
+  artist4name.innerText = topFour[2].name;
+  artist4playcount.innerText = topFour[2].playcount;
+
+  artist5name.innerText = topFour[3].name;
+  artist5playcount.innerText = topFour[3].playcount;
+
+
   // document.getElementById('top-artist').style.fontSize = "18px";
 
   // artist2.innerHTML = "<p>"+topFour[0].name+"</p><p class='artist-square-playcount'>"+topFour[0].playcount+" plays </p>";
