@@ -53,34 +53,39 @@ var populateArtistList = function(artistList){
   var topFour = topFive.splice(1, 5);
 
 
-  console.log(topFive[0].image[0]['#text'])
-
   var artist1 = document.getElementById('artist1');
+  var artist1name = document.getElementById('top-artist-square-name');
+  var artist1playcount = document.getElementById('top-artist-square-playcount');
+
   var artist2 = document.getElementById('artist2');
   var artist3 = document.getElementById('artist3');
   var artist4 = document.getElementById('artist4');
   var artist5 = document.getElementById('artist5');
 
-  artist1.innerHTML = "<p>"+topFive[0].name+"</p></br><p>"+topFive[0].playcount+" plays </p>";
-  artist1.style.color = "white";
+  var smallArtistsBoxName = document.getElementsByClassName('small-artist-square-name');
+  var smallArtistsBoxPlaycount = document.getElementsByClassName('small-artist-square-playcount');
 
-  artist2.innerHTML = "<p>"+topFour[0].name+"</p></br><p>"+topFour[0].playcount+" plays </p>";
-  artist2.style.color = "white";
 
-  artist3.innerHTML = "<p>"+topFour[1].name+"</p></br><p>"+topFour[1].playcount+" plays </p>";
-  artist3.style.color = "white";
+  artist1name.innerText = topFive[0].name;
+  artist1playcount.innerText = topFive[0].playcount + " plays";
 
-  artist4.innerHTML = "<p>"+topFour[2].name+"</p></br><p>"+topFour[2].playcount+" plays </p>";
-  artist4.style.color = "white";
+  artist2name.innerText = topFour[0].name;
+  artist2playcount.innerText = topFour[0].playcount + " plays";
 
-  artist5.innerHTML = "<p>"+topFour[3].name+"</p></br><p>"+topFour[3].playcount+" plays </p>";
-  artist5.style.color = "white";
+  artist3name.innerText = topFour[1].name;
+  artist3playcount.innerText = topFour[1].playcount + " plays";
 
-  artist1.style.backgroundImage = "url(" +topFive[0].image[3]['#text'] + ")";
-  artist2.style.backgroundImage = "url(" +topFour[0].image[2]['#text'] + ")";
-  artist3.style.backgroundImage = "url(" +topFour[1].image[2]['#text'] + ")";
-  artist4.style.backgroundImage = "url(" +topFour[2].image[2]['#text'] + ")";
-  artist5.style.backgroundImage = "url(" +topFour[3].image[2]['#text'] + ")";
+  artist4name.innerText = topFour[2].name;
+  artist4playcount.innerText = topFour[2].playcount + " plays";
+
+  artist5name.innerText = topFour[3].name;
+  artist5playcount.innerText = topFour[3].playcount + " plays";
+
+  var artistOneImage = document.getElementById('top-artist-image').src = topFive[0].image[3]['#text'];
+  var artistTwoImage = document.getElementById('artist-two-image').src = topFour[0].image[2]['#text'];
+  var artistThreeImage = document.getElementById('artist-three-image').src = topFour[1].image[2]['#text'];
+  var artistFourImage = document.getElementById('artist-four-image').src = topFour[2].image[2]['#text'];
+  var artistFiveImage = document.getElementById('artist-five-image').src = topFour[3].image[2]['#text'];
 }
 
 var populateTrackList = function(myLastFmData){
@@ -96,6 +101,9 @@ var populateTrackList = function(myLastFmData){
 }
 
 var populateUserInformation = function(user){
+
+  var profilePicture = document.getElementById('profile-picture-image');
+  profilePicture.src = user.image[2]['#text']
 
   var username = document.getElementById('username');
   var realName = document.getElementById('real-name');

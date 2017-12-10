@@ -1,13 +1,24 @@
 body {
   margin: 0 auto;
+  font-family: 'Open Sans',Lucida Grande,Helvetica Neue,Helvetica,Arial,Sans-serif
 }
+
+/*PROFILE PICTURE STYLING*/
+
+#profile-picture {
+  width: 185px;
+  height: 185px;
+  background-color: tomato;
+  border-radius: 50%
+}
+
 
 /*HEADER STYLING*/
 
 header {
   display: flex;
   flex-direction: column;
-  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Open Sans', sans-serif;*/
 }
 
 #header-logo {
@@ -30,32 +41,78 @@ header {
   text-align: center;
 }
 
-img#profile-picture {
-  width: auto;
-  max-height: 250px;
-  background-repeat: no-repeat;
-  background-position: 50%;
-  border-radius: 25%/50%;
+#profile-picture img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  border-radius: 50%;
 }
 
 /*ARTIST BLOCK STYLING*/
 
+#artist-block{
+  margin-top: 20px;
+  margin-left: 20px;
+}
+
+#top-artist-text{
+  position: absolute;
+}
+
+#top-artist-image{
+  width: 310px;
+  height: 310px;
+}
+
+.small-artist-text{
+  position:absolute;
+}
+
+.small-artist-image {
+  height: 155px;
+  width: 155px;
+}
+
+img#top-artist-image {
+  filter: brightness(75%);
+}
+
+img.small-artist-image{
+  filter: brightness(65%);
+}
+
 #artist-block {
   display: flex;
 }
-
 
 #artist1 {
   width: 310px;
   height: 310px;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#artist1 p {
+  color: white;
+  padding: 0;
+  margin: 0;
+}
+
+#top-artist-square-name {
+  font-size: 18px;
 }
 
 #artist-squares {
   display: flex;
   flex-wrap: wrap;
   flex-basis: 310px
+}
+
+#top-artist-square-playcount{
+  font-size: 12px;
 }
 
 .small-artist-square {
@@ -65,9 +122,55 @@ img#profile-picture {
   float: left;
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position:relative;
 }
 
+.small-artist-square-name {
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: underline;
+  text-shadow: 0 0 10px rgba(0,0,0,.7);
+}
+.small-artist-square-playcount {
+  font-size: 12px;
+}
+
+.small-artist-square p {
+  padding: 0;
+  margin: 0;
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+}
 
 #artist4{
   clear: left;
+}
+
+#top-artist-text {
+  padding-left: 15px;
+  padding-bottom: 15px;
+}
+
+p#artist2playcount {
+  padding-bottom: 15px;
+}
+
+p#artist3name{
+  max-width: 100%;
+}
+
+p#artist3playcount {
+  padding-bottom: 15px;
+}
+
+p#artist4playcount {
+  padding-bottom: 15px;
+}
+
+p#artist5playcount {
+  padding-bottom: 15px;
 }

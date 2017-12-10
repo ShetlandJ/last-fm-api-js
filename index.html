@@ -9,6 +9,8 @@
   <script src="lastFm.js"></script>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:700" rel="stylesheet">
 </head>
 
 <body>
@@ -18,7 +20,10 @@
     </div>
 
     <div id="header-details">
-      <img src="/images/me.jpg" id="profile-picture" alt="a picture of James">
+      <div id="profile-picture">
+        <img src="" id="profile-picture-image" alt="a picture of James">
+      <img sr
+      </div>
       <p class="header-text-details" id="username"></p>
       <p class="header-text-details" id="real-name"></p>
 
@@ -28,26 +33,51 @@
   </header>
 
 
-<div id="artist-block">
-  <div id="artist1"></div>
-  <div id="artists-squares">
-    <div class="small-artist-square" id="artist2"></div>
-    <div class="small-artist-square" id="artist3"></div>
-    <div class="small-artist-square" id="artist4"></div>
-    <div class="small-artist-square" id="artist5"></div>
+  <div id="artist-block">
+    <div id="artist1">
+      <img id="top-artist-image" src="">
+      <div id="top-artist-text">
+        <p id="top-artist-square-name"></p>
+        <p id="top-artist-square-playcount"></p>
+      </div>
+
+    </div>
+    <div id="artists-squares">
+      <div class="small-artist-square" id="artist2">
+
+        <img class="small-artist-image" id="artist-two-image" src="">
+        <div class="small-artist-text">
+          <p class="small-artist-square-name" id="artist2name"></p>
+          <p class="small-artist-square-playcount" id="artist2playcount"></p>
+        </div>
+      </div>
+
+      <div class="small-artist-square" id="artist3">
+        <img class="small-artist-image" id="artist-three-image" src="">
+        <div class="small-artist-text">
+          <p class="small-artist-square-name" id="artist3name"></p>
+          <p class="small-artist-square-playcount" id="artist3playcount"></p>
+        </div>
+      </div>
+
+      <div class="small-artist-square" id="artist4">
+        <img class="small-artist-image" id="artist-four-image" src="">
+        <div class="small-artist-text">
+          <p class="small-artist-square-name" id="artist4name"></p>
+          <p class="small-artist-square-playcount" id="artist4playcount"></p>
+        </div>
+      </div>
+
+      <div class="small-artist-square" id="artist5">
+        <img class="small-artist-image" id="artist-five-image" src="">
+        <div class="small-artist-text">
+          <p class="small-artist-square-name" id="artist5name"></p>
+          <p class="small-artist-square-playcount" id="artist5playcount"></p>
+        </div>
+      </div>
+    </div>
+
   </div>
 
-</div>
-
-  <!-- <main id="artist-content"> -->
-    <!-- <div id="artist-block"> -->
-
-    <!-- </div> -->
-    <!-- <ul id="artist-list"></ul> -->
-
-    <!-- <div id="track-content"> -->
-      <!-- <ul id="track-list"></ul> -->
-    <!-- </div> -->
-  <!-- </main> -->
 </body>
 </html>
