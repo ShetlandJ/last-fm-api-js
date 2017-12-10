@@ -10,8 +10,8 @@ body {
 header {
   display: flex;
   flex-direction: column;
-  /*font-family: 'Open Sans', sans-serif;*/
 }
+
 
 #header-logo {
   background-color: black;
@@ -25,6 +25,7 @@ header {
 #header-details {
   display: flex;
   flex-direction: row;
+  background-color: lightgrey;
 }
 
 .header-text-details {
@@ -35,7 +36,9 @@ header {
 #profile-picture img {
   display: block;
   border-radius: 50%;
+  margin: 10px 25px 10px 25px;
 }
+
 
 /*ARTIST BLOCK STYLING*/
 

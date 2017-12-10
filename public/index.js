@@ -65,7 +65,6 @@ var populateArtistList = function(artistList){
   var smallArtistsBoxName = document.getElementsByClassName('small-artist-square-name');
   var smallArtistsBoxPlaycount = document.getElementsByClassName('small-artist-square-playcount');
 
-
   artist1name.innerText = topFive[0].name;
   artist1playcount.innerText = topFive[0].playcount + " plays";
 
@@ -111,7 +110,7 @@ var populateUserInformation = function(user){
 
   username.innerText = user.name;
   realName.innerText = user.realname;
-  userTracks.innerText = user.playcount;
+  userTracks.innerText = "Scrobbles: " + user.playcount;
 }
 
 window.addEventListener('load', app)
