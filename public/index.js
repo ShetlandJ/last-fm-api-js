@@ -227,9 +227,6 @@ var populateAlbumList = function(albumList){
   var artistFiveImage = document.getElementById('album-five-image').src = topFour[3].image[2]['#text'];
 }
 
-
-
-
 var populateRecentTrackList = function(recentTracks){
   var ul = document.getElementById('recent-track-list');
   recentTracks.forEach(function(track){
@@ -237,8 +234,8 @@ var populateRecentTrackList = function(recentTracks){
     container.className = "recent-track-item";
     container.style.flexDirection = "row";
 
-    var img = document.createElement('img')
-    img.src = track.image[0]['#text']
+    var img = document.createElement('img');
+    img.src = track.image[0]['#text'];
 
     var li = document.createElement('li');
     li.innerText = track.artist['#text'] + " - " + track.name;
@@ -247,7 +244,6 @@ var populateRecentTrackList = function(recentTracks){
     container.appendChild(li);
 
     if (track['@attr']) {
-      // time_since_played.innerText = "";
       var now_playing = document.createElement('img');
       var now_playing_text = document.createElement('li');
 
@@ -270,6 +266,7 @@ var populateRecentTrackList = function(recentTracks){
       container.style.backgroundColor = "#FFFBCD"
       container.appendChild(now_playing);
       container.appendChild(now_playing_text);
+
     } else {
 
       var time_since = document.createElement('li');
@@ -285,16 +282,14 @@ var populateRecentTrackList = function(recentTracks){
 
       var minutesDifference = Math.floor(difference/1000/60);
       if (minutesDifference < 60) {
-        time_since.innerText = minutesDifference + ` minute${minutesDifference > 1 ? "s":""}`
+        time_since.innerText = minutesDifference + ` minute${minutesDifference > 1 ? "s":""}`;
       } else if (minutesDifference > 59 && minutesDifference < 1440) {
         var hour = Math.round(minutesDifference/60);
-        time_since.innerText = (Math.round(minutesDifference/60)) + ` hour${hour > 1 ? "s":""}`
+        time_since.innerText = (Math.round(minutesDifference/60)) + ` hour${hour > 1 ? "s":""}`;
       } else {
-        time_since.innerText =  (date.getDay()+1) + " " + (this.getMonth(date.getMonth()+1))
+        time_since.innerText =  (date.getDay()+1) + " " + (this.getMonth(date.getMonth()+1));
       }
-
       container.appendChild(time_since);
-
     }
     ul.appendChild(container);
   })
@@ -308,7 +303,7 @@ var populateTrackList = function(topTracks){
     container.className = "top-track-item";
     container.style.flexDirection = "row";
 
-    var img = document.createElement('img')
+    var img = document.createElement('img');
     img.src = track.image[0]['#text']
 
     var ttli = document.createElement('li');
@@ -326,13 +321,12 @@ var populateTrackList = function(topTracks){
     container.appendChild(li);
     ul.appendChild(container);
   })
-
 }
 
 var populateUserInformation = function(user){
 
   var profilePicture = document.getElementById('profile-picture-image');
-  profilePicture.src = user.image[2]['#text']
+  profilePicture.src = user.image[2]['#text'];
 
   var username = document.getElementById('username');
   var realName = document.getElementById('real-name');
@@ -344,7 +338,7 @@ var populateUserInformation = function(user){
 
   var date = new Date(user.registered['#text'] * 1000);
 
-  var month = this.getMonth(date.getMonth()+1)
+  var month = this.getMonth(date.getMonth()+1);
 
   realName.innerText = user.realname + " 🎶 scrobbling since: " + month + ", " + date.getFullYear();
 }
@@ -406,4 +400,4 @@ var removeChildNodes = function(node){
   }
 }
 
-window.addEventListener('load', app)
+window.addEventListener('load', app);
