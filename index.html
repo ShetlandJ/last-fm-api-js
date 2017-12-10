@@ -41,7 +41,7 @@
       </div>
     </div>
   </header>
-<hr />
+  <hr />
   <div id="recent-tracks">
     <h2>Recent Tracks</h2>
     <ul id="recent-track-list"></ul>
@@ -107,57 +107,9 @@
 
     </div>
 
-    <div id="album-block">
-    <div id="album1">
-    <img id="top-album-image" src="">
-    <div id="top-album-text">
-    <p id="top-album-square-name"></p>
-    <p id="top-album-square-playcount"></p>
-  </div>
-
-  </div>
-  <div id="album-squares">
-  <div class="small-album-square" id="album">
-
-  <img class="small-album-image" id="album-two-image" src="">
-  <div class="small-album-text">
-  <p class="small-album-square-name" id="album2name"></p>
-  <p class="small-album-square-playcount" id="album2playcount"></p>
-  </div>
-  </div>
-
-  <div class="small-album-square" id="album3">
-  <img class="small-album-image" id="album-three-image" src="">
-  <div class="small-album-text">
-  <p class="small-album-square-name" id="album3name"></p>
-  <p class="small-album-square-playcount" id="album3playcount"></p>
-  </div>
-  </div>
-
-  <div class="small-album-square" id="album4">
-  <img class="small-album-image" id="album-four-image" src="">
-  <div class="small-album-text">
-  <p class="small-album-square-name" id="album4name"></p>
-  <p class="small-album-square-playcount" id="album4playcount"></p>
-  </div>
-  </div>
-
-  <div class="small-album-square" id="artist5">
-  <img class="small-album-image" id="album-five-image" src="">
-  <div class="small-album-text">
-  <p class="small-album-square-name" id="artist5name"></p>
-  <p class="small-album-square-playcount" id="album5playcount"></p>
-  </div>
-  </div>
-  </div>
-
-
-
-    <div id="top-tracks">
-      <div id="tt-header">
-
-      <h2>Top Tracks</h2>
-      <select id="ttduration-selector">
+    <div id="album-block-header">
+      <h2>Top Albums</h2>
+      <select id="duration-selector">
         <option default selected>All time</option>
         <option>Past Week</option>
         <option>Past Month</option>
@@ -165,10 +117,69 @@
       </select>
     </div>
 
-      <ul id="top-tracks-list"></ul>
 
+    <div id="album-block">
+      <div id="album1">
+        <img id="top-album-image" src="">
+        <div id="top-album-text">
+          <p id="top-album-square-name"></p>
+          <p id="top-album-square-playcount"></p>
+        </div>
+
+      </div>
+      <div id="album-squares">
+        <div class="small-album-square" id="album">
+
+          <img class="small-album-image" id="album-two-image" src="">
+          <div class="small-album-text">
+            <p class="small-album-square-name" id="album2name"></p>
+            <p class="small-album-square-playcount" id="album2playcount"></p>
+          </div>
+        </div>
+
+        <div class="small-album-square" id="album3">
+          <img class="small-album-image" id="album-three-image" src="">
+          <div class="small-album-text">
+            <p class="small-album-square-name" id="album3name"></p>
+            <p class="small-album-square-playcount" id="album3playcount"></p>
+          </div>
+        </div>
+
+        <div class="small-album-square" id="album4">
+          <img class="small-album-image" id="album-four-image" src="">
+          <div class="small-album-text">
+            <p class="small-album-square-name" id="album4name"></p>
+            <p class="small-album-square-playcount" id="album4playcount"></p>
+          </div>
+        </div>
+
+        <div class="small-album-square" id="album5">
+          <img class="small-album-image" id="album-five-image" src="">
+          <div class="small-album-text">
+            <p class="small-album-square-name" id="album5name"></p>
+            <p class="small-album-square-playcount" id="album5playcount"></p>
+          </div>
+        </div>
+      </div>
+</div>
+
+
+      <div id="top-tracks">
+        <div id="tt-header">
+
+          <h2>Top Tracks</h2>
+          <select id="ttduration-selector">
+            <option default selected>All time</option>
+            <option>Past Week</option>
+            <option>Past Month</option>
+            <option>Past Year</option>
+          </select>
+        </div>
+
+        <ul id="top-tracks-list"></ul>
+
+      </div>
     </div>
-  </div>
 
-</body>
-</html>
+  </body>
+  </html>

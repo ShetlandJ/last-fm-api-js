@@ -4,7 +4,7 @@ var app = function(){
   var topArtistsUrl = lastFM.setCategoryType('gettopartists');
   var topTracksUrl = lastFM.setCategoryType('gettoptracks&limit=25');
   var recentlyPlayedTracks = lastFM.setCategoryType('getRecentTracks&limit=10');
-  var topAlbumsUrl = lastFM.setCategoryType('user.gettopalbums');
+  var topAlbumsUrl = lastFM.setCategoryType('gettopalbums');
   var userInfo = lastFM.setCategoryType('getinfo');
 
   makeRequest(topArtistsUrl, artistRequestComplete);
@@ -23,12 +23,12 @@ var makeRequest = function(url, callback){
 }
 
 
-var albumRequestComplete = function(){
+var albumsRequestComplete = function(){
   if (this.status !== 200) return;
   var jsonString = this.responseText;
   var myData = JSON.parse(jsonString);
   // changeTrackByDate(myData.toptracks.track);
-  populateAlbumList(myData.toptracks.track);
+  populateAlbumList(myData.topalbums.album);
 }
 
 var trackRequestComplete = function(){
@@ -120,7 +120,6 @@ var changeTrackByDate = function(trackList) {
 var populateArtistList = function(artistList){
 
   var artistBlock = document.getElementById('artist-block');
-  var headerDetails = document.getElementById('header-details');
 
   var topFive = artistList.splice(0, 5);
   var topFour = topFive.splice(1, 5);
@@ -160,46 +159,45 @@ var populateArtistList = function(artistList){
 }
 
 
-var populateAlbumList = function(artistList){
+var populateAlbumList = function(albumList){
+console.log(albumList);
+  var albumBlock = document.getElementById('album-block');
 
-  var artistBlock = document.getElementById('artist-block');
-  var headerDetails = document.getElementById('header-details');
-
-  var topFive = artistList.splice(0, 5);
+  var topFive = albumList.splice(0, 5);
   var topFour = topFive.splice(1, 5);
 
-  var artist1 = document.getElementById('artist1');
-  var artist1name = document.getElementById('top-artist-square-name');
-  var artist1playcount = document.getElementById('top-artist-square-playcount');
+  var album1 = document.getElementById('album1');
+  var album1name = document.getElementById('top-album-square-name');
+  var album1playcount = document.getElementById('top-album-square-playcount');
 
-  var artist2 = document.getElementById('artist2');
-  var artist3 = document.getElementById('artist3');
-  var artist4 = document.getElementById('artist4');
-  var artist5 = document.getElementById('artist5');
+  var album2 = document.getElementById('album2');
+  var album3 = document.getElementById('album3');
+  var album4 = document.getElementById('album4');
+  var album4 = document.getElementById('album4');
 
-  var smallArtistsBoxName = document.getElementsByClassName('small-artist-square-name');
-  var smallArtistsBoxPlaycount = document.getElementsByClassName('small-artist-square-playcount');
+  var smallAlbumsBoxName = document.getElementsByClassName('small-album-square-name');
+  var smallAlbumsBoxPlaycount = document.getElementsByClassName('small-album-square-playcount');
 
-  artist1name.innerText = topFive[0].name;
-  artist1playcount.innerText = topFive[0].playcount + " plays";
+  album1name.innerText = topFive[0].name;
+  album1playcount.innerText = topFive[0].playcount + " plays";
 
-  artist2name.innerText = topFour[0].name;
-  artist2playcount.innerText = topFour[0].playcount + " plays";
+  album2name.innerText = topFour[0].name;
+  album2playcount.innerText = topFour[0].playcount + " plays";
 
-  artist3name.innerText = topFour[1].name;
-  artist3playcount.innerText = topFour[1].playcount + " plays";
+  album3name.innerText = topFour[1].name;
+  album3playcount.innerText = topFour[1].playcount + " plays";
 
-  artist4name.innerText = topFour[2].name;
-  artist4playcount.innerText = topFour[2].playcount + " plays";
+  album4name.innerText = topFour[2].name;
+  album4playcount.innerText = topFour[2].playcount + " plays";
 
-  artist5name.innerText = topFour[3].name;
-  artist5playcount.innerText = topFour[3].playcount + " plays";
+  album5name.innerText = topFour[3].name;
+  album5playcount.innerText = topFour[3].playcount + " plays";
 
-  var artistOneImage = document.getElementById('top-artist-image').src = topFive[0].image[3]['#text'];
-  var artistTwoImage = document.getElementById('artist-two-image').src = topFour[0].image[2]['#text'];
-  var artistThreeImage = document.getElementById('artist-three-image').src = topFour[1].image[2]['#text'];
-  var artistFourImage = document.getElementById('artist-four-image').src = topFour[2].image[2]['#text'];
-  var artistFiveImage = document.getElementById('artist-five-image').src = topFour[3].image[2]['#text'];
+  var albumOneImage = document.getElementById('top-album-image').src = topFive[0].image[3]['#text'];
+  var artistTwoImage = document.getElementById('album-two-image').src = topFour[0].image[2]['#text'];
+  var artistThreeImage = document.getElementById('album-three-image').src = topFour[1].image[2]['#text'];
+  var artistFourImage = document.getElementById('album-four-image').src = topFour[2].image[2]['#text'];
+  var artistFiveImage = document.getElementById('album-five-image').src = topFour[3].image[2]['#text'];
 }
 
 
