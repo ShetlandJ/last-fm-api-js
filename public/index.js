@@ -7,12 +7,16 @@ var app = function(){
   var topAlbumsUrl = lastFM.setCategoryType('gettopalbums');
   var userInfo = lastFM.setCategoryType('getinfo');
 
+  var similarArtists = lastFM.similarArtists('=artist.getsimilar', 'eels');
+
+
+
   makeRequest(topArtistsUrl, artistRequestComplete);
   makeRequest(topTracksUrl, trackRequestComplete);
   makeRequest(userInfo, userRequestComplete);
   makeRequest(recentlyPlayedTracks, recentTrackRequestComplete);
   makeRequest(topAlbumsUrl, albumRequestComplete);
-
+  makeRequest(similarArtists, similarArtistRequestComplete);
 }
 
 var makeRequest = function(url, callback){
@@ -22,6 +26,12 @@ var makeRequest = function(url, callback){
   request.send();
 }
 
+var similarArtistRequestComplete = function(){
+  if (this.status !== 200) return;
+  var jsonString = this.responseText;
+  var myData = JSON.parse(jsonString);
+  similarArtistCalculator(myData.similarartists.artist);
+}
 
 var albumRequestComplete = function(){
   if (this.status !== 200) return;
@@ -59,6 +69,19 @@ var userRequestComplete = function(){
   var jsonString = this.responseText;
   var myData = JSON.parse(jsonString);
   populateUserInformation(myData.user);
+}
+
+var similarArtistCalculator = function(similarArtistData){
+  var similarArtist = document.getElementById('similar-artist');
+  var randomArtist = getRandomItem(similarArtistData);
+  similarArtist.innerText = randomArtist.name;
+  similarArtist.style.fontWeight = "bold";
+}
+
+var randomArtistUrl = function(artistName){
+  var lastFM = new LastFm();
+  var similarArtist = lastFM.similarArtists('=artist.getsimilar', artistName);
+  return similarArtist
 }
 
 var changeArtistByDate = function(artistList) {
@@ -228,6 +251,18 @@ var populateAlbumList = function(albumList){
 }
 
 var populateRecentTrackList = function(recentTracks){
+
+  var similarArtist = document.getElementById('similar-artist-strap');
+  var randomArtist = getRandomItem(recentTracks);
+
+  var noWhiteSpace = randomArtist.artist['#text'].replace(/ /g,'')
+
+  var randomArtist1 = this.randomArtistUrl(noWhiteSpace);
+
+  makeRequest(randomArtist1, similarArtistRequestComplete);
+
+  similarArtist.innerText = "Hi James. Since you recently listened to "+randomArtist.artist["#text"]+ ", you might like ";
+
   var ul = document.getElementById('recent-track-list');
   recentTracks.forEach(function(track){
     var container = document.createElement('div');
@@ -398,6 +433,10 @@ var removeChildNodes = function(node){
   while (node.hasChildNodes()) {
     node.removeChild(node.lastChild);
   }
+}
+
+var getRandomItem = function(array){
+  return array[Math.floor(Math.random()*array.length)];
 }
 
 window.addEventListener('load', app);
