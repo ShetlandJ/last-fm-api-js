@@ -12,8 +12,10 @@ li{
   max-width: 55%;
 }
 
-h2{
+h2 {
   margin-left: 50px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 hr{
@@ -21,8 +23,19 @@ hr{
 }
 
 select {
-  font-size: 12px;
+  font-size: 20px;
   padding-bottom: 10px;
+  border: 0;
+  background-color: #B80711;
+  color: white;
+}
+
+select option {
+  font-size: 20px;
+  padding-bottom: 10px;
+  border: 0;
+  background-color: #B80711;
+  color: white;
 }
 
 /*LOGO STYLING*/
@@ -42,7 +55,6 @@ h1#logo-text {
   padding-right: 30px;
   padding-left: 30px;
 }
-
 
 /*HEADER STYLING*/
 
@@ -93,11 +105,13 @@ header {
 }
 
 /*RECENT TRACKS STYLING*/
+
 #recent-track-list{
   display: flex;
   flex-direction: column;
   padding-left: 50px;
   max-width: 660px;
+  margin-top: 0px;
 }
 
 .recent-track-item{
@@ -123,11 +137,14 @@ header {
     font-size: 12px;
   }
 
-
   /*ARTIST BLOCK HEADER*/
 
   #artist-block-header {
     margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   #artist-block-header h2{
@@ -142,8 +159,8 @@ header {
   /*ARTIST BLOCK STYLING*/
 
   #artist-block{
-    margin-top: 20px;
     margin-left: 50px;
+    margin-bottom: 20px;
   }
 
   #top-artist-text{
@@ -267,12 +284,14 @@ header {
     padding-bottom: 15px;
   }
 
-  /*##############################################################*/
-
   /*ALBUM BLOCK HEADER*/
 
   #album-block-header {
     margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 
   #album-block-header h2{
@@ -287,8 +306,8 @@ header {
   /*ALBUM BLOCK STYLING*/
 
   #album-block{
-    margin-top: 20px;
     margin-left: 50px;
+    margin-bottom: 20px;
   }
 
   #top-album-text{
@@ -419,6 +438,7 @@ header {
     flex-direction: column;
     padding-left: 50px;
     max-width: 660px;
+    margin-top: 0px;
   }
 
   .top-track-item{
@@ -445,8 +465,13 @@ header {
 
     #tt-header {
       margin-left: 20px;
+      display: flex;
+      justify-content: space-between;
+      padding-top: 10px;
+      padding-bottom: 10px;
     }
 
     #tt-header h2{
       margin-left: 20px;
+      margin-bottom: 0px;
     }
